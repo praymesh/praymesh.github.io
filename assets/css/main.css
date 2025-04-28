@@ -40,7 +40,7 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f4fafd;
+  --background-color: #e3f5fd;
   --surface-color: #ffffff;
 }
 
@@ -691,7 +691,7 @@ section,
   border-radius: 0;
 }
 
-.skills .progress .skill {
+.skills .progress .skill 
   color: var(--heading-color);
   padding: 0;
   margin: 0 0 6px 0;
