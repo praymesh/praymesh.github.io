@@ -111,19 +111,26 @@
   new PureCounter();
 
   /**
-   * Animate the skills items on reveal
+   * Skills animation
    */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
+  const skillsCards = document.querySelectorAll('.skills .card');
+  skillsCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.setProperty('--card-rotation-x', '20deg');
+      card.style.setProperty('--card-rotation-y', '20deg');
+    });
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotationX = (y / rect.height - 0.5) * -40;
+      const rotationY = (x / rect.width - 0.5) * 40;
+      card.style.setProperty('--card-rotation-x', `${rotationX}deg`);
+      card.style.setProperty('--card-rotation-y', `${rotationY}deg`);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--card-rotation-x', '0deg');
+      card.style.setProperty('--card-rotation-y', '0deg');
     });
   });
 
@@ -225,5 +232,80 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Hero Particles Animation
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('tsparticles')) {
+      tsParticles.load('tsparticles', {
+        fpsLimit: 120,
+        interactivity: {
+          events: {
+            onHover: {
+              enable: true,
+              mode: 'repulse'
+            },
+            onClick: {
+              enable: true,
+              mode: 'push'
+            },
+            resize: true
+          },
+          modes: {
+            push: {
+              quantity: 4
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4
+            }
+          }
+        },
+        particles: {
+          color: {
+            value: '#64ffda'
+          },
+          links: {
+            color: '#ffffff',
+            distance: 150,
+            enable: true,
+            opacity: 0.5,
+            width: 1
+          },
+          collisions: {
+            enable: true
+          },
+          move: {
+            direction: 'none',
+            enable: true,
+            outModes: {
+              default: 'bounce'
+            },
+            random: false,
+            speed: 2,
+            straight: false
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800
+            },
+            value: 80
+          },
+          opacity: {
+            value: 0.5
+          },
+          shape: {
+            type: 'circle'
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          }
+        },
+        detectRetina: true
+      });
+    }
+  });
 
 })();
