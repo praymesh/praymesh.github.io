@@ -135,6 +135,30 @@
   });
 
   /**
+   * Project cards animation
+   */
+  const projectCards = document.querySelectorAll('.projects .project-card');
+  projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.setProperty('--card-rotation-x', '10deg');
+      card.style.setProperty('--card-rotation-y', '10deg');
+    });
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotationX = (y / rect.height - 0.5) * -20;
+      const rotationY = (x / rect.width - 0.5) * 20;
+      card.style.setProperty('--card-rotation-x', `${rotationX}deg`);
+      card.style.setProperty('--card-rotation-y', `${rotationY}deg`);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--card-rotation-x', '0deg');
+      card.style.setProperty('--card-rotation-y', '0deg');
+    });
+  });
+
+  /**
    * Initiate glightbox
    */
   const glightbox = GLightbox({

@@ -73,7 +73,7 @@
     <section id="pranay" class="hero section dark-background">
       <div id="tsparticles"></div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2><span class="hii">Hii,</span><br>I'm Pranay Meshram</h2>
+        <h2><span class="hii">Hii,</span><br><span class="name-animate">I'm Pranay Meshram</span></h2>
         <p>a <span class="typed" data-typed-items="Student, Techy, Freelancer, ML & AI Enthusiast"></span></p>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></a>
@@ -216,39 +216,79 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
+        <p>Here are some of my recent projects that showcase my skills in machine learning, computer vision, and web development.</p>
       </div><!-- End Section Title -->
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-4 col-md-6 d-flex">
-            <div class="card flex-fill">
-              <img src="assets/img/project1.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Project 1</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-card flex-fill">
+              <div class="project-image">
+                <img src="assets/img/project1.png" alt="PaliGemma Vision Language Model">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://github.com/praymesh/paligemma-implementation" target="_blank" class="github-link"><i class="bi bi-github"></i></a>
+                    <a href="#" target="_blank" class="demo-link"><i class="bi bi-eye"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h5>PaliGemma Vision Language Model</h5>
+                <p>Built PaliGemma from scratch using PyTorch, implementing vision-language understanding for multimodal tasks.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">Computer Vision</span>
+                  <span class="tech-tag">NLP</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 d-flex">
-            <div class="card flex-fill">
-              <img src="assets/img/project2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Project 2</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-card flex-fill">
+              <div class="project-image">
+                <img src="assets/img/project2.png" alt="Autonomous Drone Navigation">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://github.com/praymesh/drone-navigation" target="_blank" class="github-link"><i class="bi bi-github"></i></a>
+                    <a href="#" target="_blank" class="demo-link"><i class="bi bi-eye"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h5>Autonomous Drone Navigation</h5>
+                <p>Developed computer vision algorithms for autonomous drone navigation using YOLO and Kalman filters.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">YOLO</span>
+                  <span class="tech-tag">OpenCV</span>
+                  <span class="tech-tag">Robotics</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 d-flex">
-            <div class="card flex-fill">
-              <img src="assets/img/project3.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Project 3</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-card flex-fill">
+              <div class="project-image">
+                <img src="assets/img/project3.png" alt="LLaMA 2 Fine-tuning">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://github.com/praymesh/llama-finetune" target="_blank" class="github-link"><i class="bi bi-github"></i></a>
+                    <a href="#" target="_blank" class="demo-link"><i class="bi bi-eye"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h5>LLaMA 2 Fine-tuning with LoRA</h5>
+                <p>Fine-tuned LLaMA 2 model using LoRA and quantization techniques for efficient training and deployment.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">LLaMA 2</span>
+                  <span class="tech-tag">LoRA</span>
+                  <span class="tech-tag">HuggingFace</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section><!-- /Projects Section -->
         </div>
       </div>
     </section><!-- /Projects Section -->
@@ -269,6 +309,40 @@
         </div>
       </div>
     </section><!-- /YouTube Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Feel free to get in touch with me for collaboration opportunities or just to say hello!</p>
+      </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-item">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>IISER Bhopal, Bhopal, MP, India</p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-item">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Me</h3>
+              <p>+91 1234567890</p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-item">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Me</h3>
+              <p>pranaym23@iiserb.ac.in</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
 
   </main>
 
