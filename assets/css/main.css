@@ -12,9 +12,9 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Montserrat", sans-serif;
+  --nav-font: "Poppins", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -582,16 +582,34 @@ section,
 
 .hero h2 {
   margin: 0;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 700;
+  line-height: 56px;
+  color: var(--heading-color);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero h2 .hii {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero p {
-  color: var(--default-color);
-  margin: 10px 0 0 0;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 1.2;
+  color: var(--contrast-color);
+  margin: 15px 0 0 0;
+  font-size: 24px;
+  font-family: var(--default-font);
 }
 
 .hero p span {
@@ -602,20 +620,49 @@ section,
 }
 
 .hero .social-links {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .hero .social-links a {
   font-size: 24px;
   display: inline-block;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
 }
 
 .hero .social-links a:hover {
-  color: var(--accent-color);
+  color: var(--default-color);
+}
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -649,6 +696,12 @@ section,
 
 .about .content ul strong {
   font-weight: 600;
+}
+
+.about .content .highlight {
+  color: var(--accent-color);
+  font-weight: 700;
+  text-shadow: 1px 1px 5px rgba(100, 255, 218, 0.5);
 }
 
 .about .img-fluid {
@@ -765,20 +818,23 @@ section,
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 1.2;
+  font-family: var(--heading-font);
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: var(--accent-color);
   margin-bottom: 10px;
 }
 
 .resume .resume-item h5 {
   font-size: 16px;
+  background: rgba(var(--contrast-color-rgb), 0.1);
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
+  color: var(--contrast-color);
 }
 
 .resume .resume-item ul {
