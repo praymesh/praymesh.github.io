@@ -282,13 +282,13 @@
             },
             repulse: {
               distance: 200,
-              duration: 0.4
+              duration: 0.5
             }
           }
         },
         particles: {
           color: {
-            value: '#64ffda'
+            value: 'rgba(255, 207, 86, 1)'
           },
           links: {
             color: '#ffffff',
