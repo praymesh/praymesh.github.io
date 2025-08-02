@@ -592,6 +592,7 @@ section,
   line-height: 62px; /* Increased proportionally */
   color: var(--heading-color);
   animation: fadeIn 1s ease-in-out;
+  text-shadow: #0066ff 0 0 10px;
 }
 
 .hero h2 .hii {
