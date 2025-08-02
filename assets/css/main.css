@@ -660,7 +660,8 @@ section,
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 36px; /* Increased from 32px */
-    line-height: 40px; /* Increased proportionally */
+    line-height: 40px; 
+    /* Increased proportionally */
   }
 
   .hero h2 .hii {
