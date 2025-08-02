@@ -592,7 +592,7 @@ section,
   line-height: 62px; /* Increased proportionally */
   color: var(--heading-color);
   animation: fadeIn 1s ease-in-out;
-  text-shadow: #0066ff 0 0 10px;
+  text-shadow: #5498ff 0 0 10px;
 }
 
 .hero h2 .hii {
@@ -632,6 +632,7 @@ section,
   margin: 15px 0 0 0;
   font-size: 27px; /* Increased from 24px */
   font-family: var(--default-font);
+  text-shadow: #8892b0 0 0 10px;
 }
 
 .hero p span {
