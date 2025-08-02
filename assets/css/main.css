@@ -859,6 +859,7 @@ section,
   border-left: 2px solid var(--accent-color);
   position: relative;
   z-index: 1;
+  
 }
 
 .resume .resume-item h4 {
@@ -887,6 +888,7 @@ section,
 
 .resume .resume-item ul li {
   padding-bottom: 10px;
+  
 }
 
 .resume .resume-item:last-child {
