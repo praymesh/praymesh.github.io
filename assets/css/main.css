@@ -697,13 +697,19 @@ section,
 .about .content ul strong {
   font-weight: 600;
 }
-
 .about .content .highlight {
   color: var(--accent-color);
   font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-color) 0%, #ffe990 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   transition: transform 0.3s, text-shadow 0.3s;
+  display: inline;
+  text-shadow: 0 5px 10px rgba(88, 255, 216, 0.9);
   
 }
+  
 
 .about .content .highlight:hover{
   transform: scale(1.1);
@@ -717,6 +723,8 @@ section,
   max-width: 350px;
   object-fit: cover;
   border-radius: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 .about .img-fluid:hover {
@@ -850,6 +858,7 @@ section,
   margin-top: -2px;
   border-left: 2px solid var(--accent-color);
   position: relative;
+  z-index: 1;
 }
 
 .resume .resume-item h4 {
