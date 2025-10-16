@@ -19,7 +19,7 @@
       padding: 60px 0;
       background: linear-gradient(120deg, rgba(10,10,10,0.95), rgba(30,30,40,0.95));
       color: #fff;
-    }
+    }   
 
     .paper-frame {
       border: 2px solid rgba(255,255,255,0.06);
@@ -37,6 +37,31 @@
     }
 
     .gloss { color: #a8fff0; }
+    /* Fallbacks to avoid the "plain background" issue when assets or JS don't init */
+    /* Ensure main content is not hidden behind the fixed sidebar header */
+    .main {
+      padding: 40px 30px;
+    }
+
+    @media (min-width: 1200px) {
+      /* match the template's sidebar width so main is visible */
+      .main {
+        margin-left: 300px;
+      }
+    }
+
+    /* Make sure text is readable even if CSS variables fail to load */
+    .project-hero,
+    .main,
+    .card,
+    .project-content {
+      color: #e6f7f2 !important;
+    }
+
+    /* Ensure iframe has a visible background */
+    .paper-frame {
+      background: #ffffff;
+    }
   </style>
 </head>
 
