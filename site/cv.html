@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Pranay Meshram</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cv-hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
+            padding: 2rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .cv-hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.8rem;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cv-section {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* Experience Items - Simple List */
+        .experience-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .exp-org {
+            font-size: 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-duration {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 1.3rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            padding: 0.4rem 0.9rem;
+            background-color: var(--bg-accent);
+            color: var(--text-primary);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Education Section */
+        .education-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .education-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .education-institution {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .cv-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .download-btn {
+                padding: 0.6rem 1.4rem;
+                font-size: 0.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-item {
+                padding: 1.2rem;
+            }
+
+            .exp-title {
+                font-size: 1.1rem;
+            }
+
+            .education-card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cv-hero {
+                padding: 1.75rem 0 1.5rem;
+            }
+
+            .cv-hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .exp-title {
+                font-size: 1.05rem;
+            }
+
+            .education-header {
+                flex-direction: column;
+            }
+
+            .exp-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Pranay Meshram</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="publications.html" class="nav-link">Publications</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="cv.html" class="nav-link active">CV</a></li>
+                <li><a href="beyond-academia.html" class="nav-link">Beyond Academia</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cv-hero">
+        <div class="container">
+            <h1>Curriculum Vitae</h1>
+            <a href="pranay-meshram-cv.pdf" download class="download-btn">
+                <i class="fas fa-download"></i> Download PDF
+            </a>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="cv-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+
+            <div class="education-card">
+                <div class="education-header">
+                    <div>
+                        <h3 class="education-degree">Bachelor's in Data Science and Engineering</h3>
+                        <p class="exp-org">Indian Institute of Science Education and Research, Bhopal (INDIA)</p>
+                    </div>
+                    <span class="exp-date">2023 - Present</span>
+                </div>
+                <p class="exp-description">
+                    • Coordinator of the Electronics and Robotics Club, IISER-B<br>
+                    • Media Lead at Computing and Networking Council, IISER-B<br>
+                    • Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, Data Structures, Algorithms, Linear Algebra, Probability & Statistics
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="cv-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+            </div>
+
+            <div class="experience-list">
+                <!-- Experience 1 -->
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Project Intern | VITAL Lab</h3>
+                            <p class="exp-org">Indian Institute of Technology, Roorkee</p>
+                            <p class="exp-duration">Jun 2025 - Present · 5 mos</p>
+                        </div>
+                    </div>
+                    <p class="exp-description">
+                        Exploring and Developing novel methods for Visual Place Recognition and Geolocalization under Dr.Gaurav Kumar Nayak.
+                    </p>
+                </div>
+
+                <!-- Experience 2 - EECS Club -->
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">EECS Club | IISER Bhopal</h3>
+                            <p class="exp-duration">1 yr 1 mo</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Coordinator Role -->
+                    <div style="margin-left: 1rem; margin-top: 0.8rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem;">Coordinator</h4>
+                        <p class="exp-date">May 2025 - Present · 6 mos</p>
+                    </div>
+                    
+                    <!-- Core Committee Member Role -->
+                    <div style="margin-left: 1rem; margin-top: 0.8rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem;">Core Committee Member</h4>
+                        <p class="exp-date">Oct 2024 - May 2025 · 8 mos</p>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Summer Research Intern</h3>
+                            <p class="exp-org">MuSiC@IISERB: MUlti-agent SImulation & Control Lab · Internship</p>
+                            <p class="exp-duration">May 2025 - Jul 2025 · 3 mos</p>
+                        </div>
+                    </div>
+                    <p class="exp-description">
+                        Implemented Vision Language Models for Open Vocabulary Segmentation tasks. If someone is interested in collaborating this project please dm.
+                    </p>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Core Committee Member | Media Lead</h3>
+                            <p class="exp-org">Computing and Networking Council | IISER Bhopal</p>
+                            <p class="exp-duration">Sep 2024 - Feb 2025 · 6 mos</p>
+                        </div>
+                    </div>
+                    <p class="exp-description">
+                        Bhopal, Madhya Pradesh, India
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="cv-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Bash</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> ML/DL Frameworks</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">Hugging Face</span>
+                        <span class="skill-item">OpenCV</span>
+                        <span class="skill-item">Scikit-learn</span>
+                        <span class="skill-item">Keras</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-eye"></i> Computer Vision</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Vision Transformers</span>
+                        <span class="skill-item">Segmentation</span>
+                        <span class="skill-item">Object Detection</span>
+                        <span class="skill-item">Image Processing</span>
+                        <span class="skill-item">VLMs</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> AI/ML Techniques</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Transformers</span>
+                        <span class="skill-item">LLMs</span>
+                        <span class="skill-item">LoRA</span>
+                        <span class="skill-item">Quantization</span>
+                        <span class="skill-item">Transfer Learning</span>
+                        <span class="skill-item">Fine-tuning</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Linux</span>
+                        <span class="skill-item">Jupyter</span>
+                        <span class="skill-item">VS Code</span>
+                        <span class="skill-item">Raspberry Pi</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Data & Cloud</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">NumPy</span>
+                        <span class="skill-item">Pandas</span>
+                        <span class="skill-item">Matplotlib</span>
+                        <span class="skill-item">Google Colab</span>
+                        <span class="skill-item">Kaggle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Pranay Meshram</h3>
+                    <p>3rd Year UG Student</p>
+                    <p>IISER Bhopal</p>
+                    <p>Email: <a href="mailto:your.email@institution.edu">your.email@institution.edu</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=yourid" target="_blank" aria-label="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://orcid.org/your-orcid" target="_blank" aria-label="ORCID">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pranay Meshram. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

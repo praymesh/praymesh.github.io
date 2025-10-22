@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. [Your Name] - Academic Portfolio</title>
+    <title>Pranay Meshram- Academic Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,16 +11,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">[Your Name]</a>
-            <ul class="nav-menu">
+            <a href="index.html" class="nav-logo">Pranay Meshram</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="publications.html" class="nav-link">Publications</a></li>
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="cv.html" class="nav-link">CV</a></li>
                 <li><a href="beyond-academia.html" class="nav-link">Beyond Academia</a></li>
-                <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
             </button>
         </div>
     </nav>
@@ -30,19 +33,39 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Hello, I'm <span class="highlight">Pranay Meshram </span></h1>
-                    <p class="hero-subtitle">Researcher | Academic | Innovator</p>
+                    <h1 class="hero-title">Hello, I'm <span class="highlight">Pranay Meshram</span></h1>
+                    <p class="hero-subtitle">Researcher | Computer Vision Enthusiast | AI/ML Developer</p>
                     <p class="hero-description">
-                        I am a passionate researcher specializing in <strong>[Your Field of Study]</strong> 
-                        at <strong>[Your Institution]</strong>. My work focuses on advancing knowledge in 
-                        <strong>[specific research areas]</strong>, with a commitment to bridging theoretical 
-                        insights and practical applications.
+                        I'm Pranay, a 3rd-year UG student at the <strong>Indian Institute of Science Education and Research (IISER) Bhopal</strong>, with a deep and growing interest in <strong>Computer Vision and Machine Learning</strong>. My current research involves using <strong>Vision Language Models for segmentation tasks and control in Autonomous Navigation</strong> at <strong>MuSiC Lab, IISER Bhopal</strong>.
                     </p>
                     <p class="hero-description">
-                        Through rigorous investigation and collaborative inquiry, I strive to contribute 
-                        meaningful solutions to complex challenges in <strong>[your domain]</strong>. My 
-                        research has been published in leading journals and presented at international conferences.
+                        I'm also working on <strong>Visual Place Recognition (VPR) and image geolocalization</strong> at <strong>IIT Roorkee</strong> under the guidance of <strong>Dr. Gaurav Kumar Nayak</strong>. Over the past year, I have worked on various projects, including building models from scratch like <strong>PaliGemma, ViT, and Transformers</strong>, fine-tuning LLMs like <strong>LLaMA 2 using LoRA and quantization</strong>, and deploying real-time ML models on <strong>Raspberry Pi using thermal imagery</strong>.
                     </p>
+                    <p class="hero-description">
+                    
+        
+                    <!-- Social Media Links -->
+                    <div class="hero-social">
+                        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter" class="hero-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn" class="hero-social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub" class="hero-social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=yourid" target="_blank" aria-label="Google Scholar" class="hero-social-link">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://orcid.org/your-orcid" target="_blank" aria-label="ORCID" class="hero-social-link">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube" class="hero-social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    
                     <div class="hero-buttons">
                         <a href="publications.html" class="btn btn-primary">View Publications</a>
                         <a href="projects.html" class="btn btn-secondary">Explore Projects</a>
@@ -50,7 +73,7 @@
                 </div>
                 <div class="hero-image">
                     <div class="image-wrapper">
-                        <img src="profile-photo.jpg" alt="[Your Name]" class="profile-photo">
+                        <img src="profile-photo.jpg" alt="Pranay Meshram" class="profile-photo">
                         <div class="image-border"></div>
                     </div>
                 </div>
@@ -58,45 +81,102 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
+    <!-- Professional Experience -->
+    <section class="experience">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        My academic journey began with a deep curiosity about <strong>[specific interest]</strong>, 
-                        which has evolved into a comprehensive research program exploring the intersections of 
-                        <strong>[field 1]</strong>, <strong>[field 2]</strong>, and <strong>[field 3]</strong>.
-                    </p>
-                    <p>
-                        I hold a <strong>[Degree]</strong> from <strong>[University]</strong>, where I developed 
-                        expertise in <strong>[methodologies/techniques]</strong>. Currently, I am working on 
-                        <strong>[current research focus]</strong>, investigating how <strong>[research question]</strong> 
-                        can inform both academic discourse and real-world practice.
-                    </p>
-                    <p>
-                        Beyond the laboratory and lecture hall, I am committed to fostering inclusive academic 
-                        communities and mentoring the next generation of researchers. I believe that great 
-                        scholarship emerges from diverse perspectives and collaborative engagement.
-                    </p>
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="date-badge">June 2025 - Present</span>
+                    </div>
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="experience-title">Project Intern</h3>
+                        <p class="experience-org">IIT Roorkee</p>
+                        <p class="experience-location">
+                            <i class="fas fa-map-marker-alt"></i> Roorkee, India
+                        </p>
+                        <ul class="experience-description">
+                            <li>Working on Visual Place Recognition (VPR) and image geolocalization</li>
+                            <li>Developing novel deep learning models for cross-view image matching</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">VPR</span>
+                            <span class="tag">Geolocalization</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">[XX]</div>
-                        <div class="stat-label">Publications</div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="experience-title">Research Intern</h3>
+                        <p class="experience-org">MuSiC Lab, IISER Bhopal</p>
+                        <p class="experience-location">
+                            <i class="fas fa-map-marker-alt"></i> IISER Bhopal, India
+                        </p>
+                        <ul class="experience-description">
+                            <li>Implementing Vision Language Models for segmentation tasks and control in Autonomous Navigation</li>
+                            <li>Current focus on improving model robustness and generalization on diverse datasets</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Vision Language Models</span>
+                            <span class="tag">Segmentation</span>
+                            <span class="tag">Autonomous Navigation</span>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">[XX]</div>
-                        <div class="stat-label">Projects</div>
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot"></div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">[XX]</div>
-                        <div class="stat-label">Citations</div>
+                    <div class="timeline-date">
+                        <span class="date-badge">May 2025 - Present</span>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">[XX]</div>
-                        <div class="stat-label">Conferences</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-box">
+                <div class="skill-row">
+                    <div class="skill-label">ML/DL & AI</div>
+                    <div class="skill-items">
+                        <span class="skill-badge">PyTorch</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">Hugging Face</span>
+                        <span class="skill-badge">Transformers</span>
+                        <span class="skill-badge">LLMs</span>
+                        <span class="skill-badge">LoRA</span>
+                        <span class="skill-badge">Quantization</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-label">Computer Vision</div>
+                    <div class="skill-items">
+                        <span class="skill-badge">OpenCV</span>
+                        <span class="skill-badge">Vision Transformers</span>
+                        <span class="skill-badge">Segmentation</span>
+                        <span class="skill-badge">Object Detection</span>
+                        <span class="skill-badge">VLMs</span>
+                        <span class="skill-badge">PaliGemma</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-label">Programming & Tools</div>
+                    <div class="skill-items">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">Linux</span>
+                        <span class="skill-badge">Raspberry Pi</span>
+                        <span class="skill-badge">Jupyter</span>
                     </div>
                 </div>
             </div>
@@ -107,26 +187,22 @@
     <section class="interests">
         <div class="container">
             <h2 class="section-title">Research Interests</h2>
-            <div class="interests-grid">
-                <div class="interest-card">
+            <div class="interests-grid-compact">
+                <div class="interest-card-compact">
+                    <i class="fas fa-eye"></i>
+                    <h3>Computer Vision</h3>
+                </div>
+                <div class="interest-card-compact">
                     <i class="fas fa-brain"></i>
-                    <h3>[Research Area 1]</h3>
-                    <p>Exploring the fundamental principles and applications of [specific topic].</p>
+                    <h3>Machine Learning</h3>
                 </div>
-                <div class="interest-card">
-                    <i class="fas fa-microscope"></i>
-                    <h3>[Research Area 2]</h3>
-                    <p>Investigating novel approaches to understanding [specific phenomenon].</p>
+                <div class="interest-card-compact">
+                    <i class="fas fa-robot"></i>
+                    <h3>Autonomous Navigation</h3>
                 </div>
-                <div class="interest-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>[Research Area 3]</h3>
-                    <p>Developing innovative methodologies for analyzing [specific data/systems].</p>
-                </div>
-                <div class="interest-card">
-                    <i class="fas fa-network-wired"></i>
-                    <h3>[Research Area 4]</h3>
-                    <p>Examining the interconnections between [field] and [application domain].</p>
+                <div class="interest-card-compact">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Visual Place Recognition</h3>
                 </div>
             </div>
         </div>
@@ -137,9 +213,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>[Your Name]</h3>
-                    <p>[Your Title/Position]</p>
-                    <p>[Your Institution]</p>
+                    <h3>Pranay Meshram</h3>
+                    <p>3rd Year UG Student</p>
+                    <p>IISER Bhopal</p>
                     <p>Email: <a href="mailto:your.email@institution.edu">your.email@institution.edu</a></p>
                 </div>
                 <div class="footer-social">
@@ -167,7 +243,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+                <p>&copy; 2025 Pranay Meshram. All rights reserved.</p>
             </div>
         </div>
     </footer>

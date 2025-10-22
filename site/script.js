@@ -2,8 +2,8 @@
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Check for saved theme preference or default to dark mode
+const currentTheme = localStorage.getItem('theme') || 'dark';
 htmlElement.setAttribute('data-theme', currentTheme);
 updateThemeIcon(currentTheme);
 
@@ -162,27 +162,15 @@ if (document.querySelector('.stat-number')) {
     animateStats();
 }
 
-// Mobile menu toggle (for responsive design)
-const createMobileMenu = () => {
-    const navMenu = document.querySelector('.nav-menu');
-    const navContainer = document.querySelector('.nav-container');
-    
-    // Create hamburger button for mobile
-    const hamburger = document.createElement('button');
-    hamburger.classList.add('hamburger');
-    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-    hamburger.setAttribute('aria-label', 'Toggle menu');
-    
-    // Only add on mobile
-    if (window.innerWidth <= 768) {
-        if (!document.querySelector('.hamburger')) {
-            navContainer.insertBefore(hamburger, navMenu);
-        }
-    }
-    
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         const icon = hamburger.querySelector('i');
+        
         if (navMenu.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
@@ -191,11 +179,30 @@ const createMobileMenu = () => {
             icon.classList.add('fa-bars');
         }
     });
-};
 
-// Initialize mobile menu
-window.addEventListener('resize', createMobileMenu);
-createMobileMenu();
+    // Close menu when clicking on a link
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !hamburger.contains(e.target) && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+}
 
 // Add loading animation
 window.addEventListener('load', () => {
@@ -297,35 +304,13 @@ style.textContent = `
         }
     }
     
-    .hamburger {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        cursor: pointer;
-        padding: 0.5rem;
-    }
-    
-    @media (max-width: 768px) {
-        .hamburger {
-            display: block;
-        }
-        
-        .nav-menu {
-            display: none;
-        }
-        
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--bg-primary);
-            padding: 1rem;
-            box-shadow: var(--shadow-md);
+    @media (max-width: 480px) {
+        div[style*="position: fixed"] {
+            bottom: 10px !important;
+            right: 10px !important;
+            left: 10px !important;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.9rem !important;
         }
     }
 `;
