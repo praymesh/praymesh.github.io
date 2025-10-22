@@ -68,24 +68,40 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .passion-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 1.2rem;
+        .passion-photo-placeholder {
+            width: 100%;
+            height: 180px;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
-            border-radius: 50%;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .passion-photo-placeholder::after {
+            content: 'Photo Coming Soon';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
             color: #ffffff;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         .passion-card h3 {
             font-size: 1.3rem;
             color: var(--text-primary);
             margin-bottom: 0.6rem;
+            font-weight: 700;
         }
 
         .passion-card p {
@@ -476,64 +492,39 @@
     <section class="beyond-hero">
         <div class="container">
             <h1>Beyond Academia</h1>
-            <p>
-                Life is not just about research papers and conferences. Here's a glimpse into 
-                my creative pursuits, hobbies, and the things that fuel my curiosity beyond the lab.
-            </p>
+            <p>Exploring creativity through content creation, video editing, and photography.</p>
         </div>
     </section>
 
-    <!-- Intro -->
+    <!-- Passions Section -->
     <section class="passion-section">
         <div class="container">
-            <div class="passion-intro">
-                <p>
-                    While my academic work occupies much of my time, I believe that diverse experiences 
-                    and creative outlets enrich both my personal life and my professional perspective. 
-                    These passions keep me balanced, inspired, and constantly learning.
-                </p>
-                <p>
-                    From creating content that makes complex ideas accessible to exploring the art of 
-                    storytelling through video, these pursuits remind me that knowledge and creativity 
-                    are deeply interconnected.
-                </p>
-            </div>
-
             <div class="passions-grid">
                 <div class="passion-card">
-                    <div class="passion-icon">
+                    <div class="passion-photo-placeholder">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <h3>Content Creation</h3>
-                    <p>
-                        Creating educational and engaging content on YouTube, breaking down complex 
-                        research topics into accessible narratives that inspire curiosity and learning.
-                    </p>
-                    <a href="#youtube-section" class="passion-link">Explore My Channel</a>
+                    <p>Educational content on YouTube about tech and research.</p>
+                    <a href="#youtube-section" class="passion-link">My Channel</a>
                 </div>
 
                 <div class="passion-card">
-                    <div class="passion-icon">
+                    <div class="passion-photo-placeholder">
                         <i class="fas fa-video"></i>
                     </div>
                     <h3>Video Editing</h3>
-                    <p>
-                        The art of visual storytelling through editing—transforming raw footage into 
-                        compelling narratives that educate, entertain, and engage audiences.
-                    </p>
-                    <a href="#" class="passion-link">View Portfolio</a>
+                    <p>Creating engaging visual stories and editing projects.</p>
+                    <a href="#" class="passion-link">Portfolio</a>
                 </div>
 
                 <div class="passion-card">
-                    <div class="passion-icon">
+                    <div class="passion-photo-placeholder">
                         <i class="fas fa-camera"></i>
                     </div>
                     <h3>Photography</h3>
-                    <p>
-                        Capturing moments through the lens, from scientific visualization to creative 
-                        photography, finding beauty in both the microscopic and the magnificent.
-                    </p>
-                    <a href="#" class="passion-link">View Gallery</a>
+                    <p>Capturing moments and exploring creative photography.</p>
+                    <a href="#" class="passion-link">Gallery</a>
                 </div>
             </div>
         </div>
@@ -543,23 +534,14 @@
     <section class="youtube-section" id="youtube-section">
         <div class="container">
             <div class="youtube-header">
-                <h2>My YouTube Journey</h2>
-                <p>Bridging the gap between academia and public understanding through video</p>
+                <h2>My YouTube Channel</h2>
             </div>
 
             <div class="youtube-content">
                 <div class="youtube-description">
                     <h3><i class="fab fa-youtube"></i> [@YourChannelName]</h3>
                     <p>
-                        My YouTube channel is a space where I share my passion for [Your Field] with 
-                        a broader audience. Through carefully crafted videos, I break down complex 
-                        research concepts, share insights from my academic journey, and explore the 
-                        fascinating intersections of science and everyday life.
-                    </p>
-                    <p>
-                        From in-depth explanations of cutting-edge research to behind-the-scenes looks 
-                        at academic life, my channel aims to make knowledge accessible and inspire the 
-                        next generation of researchers and curious minds.
+                        Creating tech and research content. From ML tutorials to academic life insights.
                     </p>
 
                     <div class="youtube-stats">
@@ -579,7 +561,7 @@
 
                     <a href="https://youtube.com/@yourchannel" target="_blank" class="youtube-cta">
                         <i class="fab fa-youtube"></i>
-                        Subscribe to My Channel
+                        Subscribe
                     </a>
                 </div>
 
@@ -589,8 +571,8 @@
                             <i class="fas fa-play-circle"></i>
                         </div>
                         <div class="video-info">
-                            <h4>Understanding [Research Topic]: Explained</h4>
-                            <p>[XXX]K views • [X] months ago</p>
+                            <h4>Latest Video Title</h4>
+                            <p>[XXX]K views</p>
                         </div>
                     </div>
 
@@ -599,18 +581,8 @@
                             <i class="fas fa-play-circle"></i>
                         </div>
                         <div class="video-info">
-                            <h4>A Day in the Life of a Researcher</h4>
-                            <p>[XXX]K views • [X] months ago</p>
-                        </div>
-                    </div>
-
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
-                        <div class="video-info">
-                            <h4>How to [Skill/Topic] - Tutorial Series</h4>
-                            <p>[XXX]K views • [X] months ago</p>
+                            <h4>Popular Video Title</h4>
+                            <p>[XXX]K views</p>
                         </div>
                     </div>
                 </div>
