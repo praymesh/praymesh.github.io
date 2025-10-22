@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - [Your Name]</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .publications-hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .publications-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .publications-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .publications-section {
+            padding: 4rem 0;
+        }
+
+        .year-section {
+            margin-bottom: 4rem;
+        }
+
+        .year-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .publication-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .pub-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pub-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-authors .me {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .pub-link {
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pub-link.pdf {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+
+        .pub-link.pdf:hover {
+            background-color: #b91c1c;
+        }
+
+        .pub-link.doi {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .pub-link.doi:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .pub-link.code {
+            background-color: #059669;
+            color: #ffffff;
+        }
+
+        .pub-link.code:hover {
+            background-color: #047857;
+        }
+
+        .pub-link.slides {
+            background-color: #7c3aed;
+            color: #ffffff;
+        }
+
+        .pub-link.slides:hover {
+            background-color: #6d28d9;
+        }
+
+        .filter-section {
+            background-color: var(--bg-secondary);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">[Your Name]</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="publications.html" class="nav-link active">Publications</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="beyond-academia.html" class="nav-link">Beyond Academia</a></li>
+                <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="publications-hero">
+        <div class="container">
+            <h1>Publications</h1>
+            <p>A comprehensive collection of my research contributions to advancing knowledge in [Your Field]</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Journal Articles</button>
+                <button class="filter-btn">Conference Papers</button>
+                <button class="filter-btn">Book Chapters</button>
+                <button class="filter-btn">Preprints</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications List -->
+    <section class="publications-section">
+        <div class="container">
+            <!-- 2025 Publications -->
+            <div class="year-section">
+                <h2 class="year-title">2025</h2>
+                
+                <div class="publication-card">
+                    <span class="pub-type">Journal Article</span>
+                    <h3 class="pub-title">Novel Approaches to [Research Topic]: A Comprehensive Study</h3>
+                    <p class="pub-authors">
+                        <span class="me">[Your Name]</span>, Co-Author Name, Another Author
+                    </p>
+                    <p class="pub-venue">
+                        Journal of [Your Field], Vol. XX, Issue X, pp. 1-20, 2025
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                        <a href="#" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <span class="pub-type">Conference Paper</span>
+                    <h3 class="pub-title">Investigating [Specific Problem] in [Domain]: An Empirical Analysis</h3>
+                    <p class="pub-authors">
+                        First Author, <span class="me">[Your Name]</span>, Third Author
+                    </p>
+                    <p class="pub-venue">
+                        Proceedings of the International Conference on [Field], 2025
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                        <a href="#" class="pub-link slides"><i class="fas fa-presentation"></i> Slides</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2024 Publications -->
+            <div class="year-section">
+                <h2 class="year-title">2024</h2>
+                
+                <div class="publication-card">
+                    <span class="pub-type">Journal Article</span>
+                    <h3 class="pub-title">Advanced Methods for [Research Area]: Theory and Practice</h3>
+                    <p class="pub-authors">
+                        <span class="me">[Your Name]</span>, Collaborator Name
+                    </p>
+                    <p class="pub-venue">
+                        [Journal Name], Vol. XX, No. X, pp. 100-125, 2024
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                        <a href="#" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <span class="pub-type">Conference Paper</span>
+                    <h3 class="pub-title">A Framework for Understanding [Topic] in Modern [Context]</h3>
+                    <p class="pub-authors">
+                        Author One, <span class="me">[Your Name]</span>, Author Three, Author Four
+                    </p>
+                    <p class="pub-venue">
+                        [Conference Name], Best Paper Award, 2024
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                        <a href="#" class="pub-link slides"><i class="fas fa-presentation"></i> Slides</a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <span class="pub-type">Book Chapter</span>
+                    <h3 class="pub-title">[Chapter Topic]: Current Trends and Future Directions</h3>
+                    <p class="pub-authors">
+                        <span class="me">[Your Name]</span>
+                    </p>
+                    <p class="pub-venue">
+                        In: [Book Title], Editor Names (Eds.), Publisher Name, 2024
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2023 Publications -->
+            <div class="year-section">
+                <h2 class="year-title">2023</h2>
+                
+                <div class="publication-card">
+                    <span class="pub-type">Journal Article</span>
+                    <h3 class="pub-title">Exploring the Relationship Between [Variable A] and [Variable B]</h3>
+                    <p class="pub-authors">
+                        <span class="me">[Your Name]</span>, Co-Author Name, Another Collaborator
+                    </p>
+                    <p class="pub-venue">
+                        [Journal Name], Vol. XX, Issue X, pp. 50-75, 2023
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link doi"><i class="fas fa-link"></i> DOI</a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <span class="pub-type">Preprint</span>
+                    <h3 class="pub-title">Preliminary Findings on [Emerging Topic] in [Field]</h3>
+                    <p class="pub-authors">
+                        <span class="me">[Your Name]</span>, Research Team Member
+                    </p>
+                    <p class="pub-venue">
+                        arXiv preprint, 2023
+                    </p>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="#" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>[Your Name]</h3>
+                    <p>[Your Title/Position]</p>
+                    <p>[Your Institution]</p>
+                    <p>Email: <a href="mailto:your.email@institution.edu">your.email@institution.edu</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=yourid" target="_blank" aria-label="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://orcid.org/your-orcid" target="_blank" aria-label="ORCID">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

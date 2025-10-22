@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Photo Placeholder Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        #canvas {
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .preview {
+            margin-top: 2rem;
+        }
+        
+        .note {
+            background: #f0f4f8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Profile Photo Placeholder Generator</h1>
+        <p>Generate a temporary profile photo with your initials until you have a professional photo ready.</p>
+        
+        <div class="input-group">
+            <label for="initials">Your Initials (e.g., JD for John Doe)</label>
+            <input type="text" id="initials" maxlength="3" placeholder="Enter 2-3 letters" value="YN">
+        </div>
+        
+        <div class="input-group">
+            <label for="name">Your Full Name (for alt text)</label>
+            <input type="text" id="name" placeholder="John Doe" value="Your Name">
+        </div>
+        
+        <button onclick="generateImage()">Generate Placeholder</button>
+        
+        <div class="preview">
+            <canvas id="canvas" width="800" height="800"></canvas>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+            <button id="downloadBtn" style="display: none;" onclick="downloadImage()">
+                ⬇️ Download as profile-photo.jpg
+            </button>
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> This is a temporary placeholder. For best results, use a professional headshot. 
+            After downloading, place the file in your site folder as <code>profile-photo.jpg</code>.
+        </div>
+    </div>
+    
+    <script>
+        const colors = [
+            ['#667eea', '#764ba2'],
+            ['#f093fb', '#f5576c'],
+            ['#4facfe', '#00f2fe'],
+            ['#43e97b', '#38f9d7'],
+            ['#fa709a', '#fee140'],
+            ['#30cfd0', '#330867'],
+            ['#a8edea', '#fed6e3'],
+            ['#ff9a9e', '#fecfef']
+        ];
+        
+        function generateImage() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const initials = document.getElementById('initials').value.toUpperCase() || 'YN';
+            const name = document.getElementById('name').value || 'Your Name';
+            
+            // Random gradient colors
+            const colorPair = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 800, 800);
+            gradient.addColorStop(0, colorPair[0]);
+            gradient.addColorStop(1, colorPair[1]);
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 800);
+            
+            // Draw initials
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 300px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(initials, 400, 400);
+            
+            // Show canvas and download button
+            canvas.style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'inline-block';
+        }
+        
+        function downloadImage() {
+            const canvas = document.getElementById('canvas');
+            const link = document.createElement('a');
+            link.download = 'profile-photo.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+        
+        // Generate on page load
+        window.onload = generateImage;
+    </script>
+</body>
+</html>

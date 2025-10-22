@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - [Your Name]</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .projects-hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .projects-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .projects-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .projects-section {
+            padding: 4rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-ongoing {
+            background-color: #10b981;
+            color: #ffffff;
+        }
+
+        .status-completed {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .status-upcoming {
+            background-color: #f59e0b;
+            color: #ffffff;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.8rem;
+            background-color: var(--bg-accent);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-link {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-link.primary {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .project-link.primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .project-link.secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .project-link.secondary:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .category-section {
+            margin-bottom: 5rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-title i {
+            color: var(--accent-color);
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            color: #ffffff;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-project h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .featured-project .project-links .project-link {
+            background-color: #ffffff;
+            color: var(--accent-color);
+        }
+
+        .featured-project .project-links .project-link:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">[Your Name]</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="publications.html" class="nav-link">Publications</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="beyond-academia.html" class="nav-link">Beyond Academia</a></li>
+                <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1>Research Projects</h1>
+            <p>Exploring innovative solutions through interdisciplinary research and collaboration</p>
+        </div>
+    </section>
+
+    <!-- Projects Content -->
+    <section class="projects-section">
+        <div class="container">
+            
+            <!-- Featured Project -->
+            <div class="featured-project">
+                <span class="featured-badge"><i class="fas fa-star"></i> Featured Project</span>
+                <h2>[Flagship Project Title]</h2>
+                <p>
+                    This groundbreaking project investigates [core research question], combining cutting-edge 
+                    methodologies from [field 1] and [field 2] to address critical challenges in [domain]. 
+                    Funded by [Grant Source], this multi-year initiative brings together an international team 
+                    of researchers to develop [innovative solution/framework].
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Data Science</span>
+                    <span class="tag">Interdisciplinary</span>
+                    <span class="tag">Funded Research</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link primary">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-file-alt"></i> Publications
+                    </a>
+                </div>
+            </div>
+
+            <!-- Current Research Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-flask"></i>
+                    Current Research Projects
+                </h2>
+                <p class="category-description">
+                    Ongoing investigations pushing the boundaries of knowledge in [Your Field]
+                </p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-ongoing">Ongoing</span>
+                            </div>
+                            <h3 class="project-title">[Research Project Title 1]</h3>
+                            <p class="project-description">
+                                Investigating the fundamental mechanisms of [phenomenon] through advanced 
+                                computational modeling and empirical validation. This project aims to develop 
+                                a unified framework for understanding [specific aspect].
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Computational Modeling</span>
+                                <span class="tag">Theory</span>
+                                <span class="tag">Simulation</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a href="#" class="project-link secondary">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-ongoing">Ongoing</span>
+                            </div>
+                            <h3 class="project-title">[Data-Driven Project Title]</h3>
+                            <p class="project-description">
+                                Leveraging large-scale datasets to uncover patterns in [domain]. This 
+                                collaborative project develops novel analytical techniques for extracting 
+                                meaningful insights from complex, high-dimensional data.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Big Data</span>
+                                <span class="tag">Analytics</span>
+                                <span class="tag">Collaboration</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a href="#" class="project-link secondary">
+                                    <i class="fas fa-chart-bar"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-ongoing">Ongoing</span>
+                            </div>
+                            <h3 class="project-title">[Interdisciplinary Project]</h3>
+                            <p class="project-description">
+                                Bridging [discipline 1] and [discipline 2] to address real-world challenges 
+                                in [application area]. This project integrates theoretical insights with 
+                                practical implementations to create actionable solutions.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Applied Research</span>
+                                <span class="tag">Cross-Disciplinary</span>
+                                <span class="tag">Impact</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a href="#" class="project-link secondary">
+                                    <i class="fas fa-file-pdf"></i> Paper
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-check-circle"></i>
+                    Completed Projects
+                </h2>
+                <p class="category-description">
+                    Successfully concluded research initiatives with published outcomes
+                </p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-completed">Completed</span>
+                            </div>
+                            <h3 class="project-title">[Completed Project Title 1]</h3>
+                            <p class="project-description">
+                                Successfully developed and validated a novel approach to [problem]. Results 
+                                published in [Journal Name] and presented at [Conference]. The findings have 
+                                influenced subsequent research in the field.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Published</span>
+                                <span class="tag">Experimental</span>
+                                <span class="tag">Validated</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-file-alt"></i> Paper
+                                </a>
+                                <a href="#" class="project-link secondary">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-completed">Completed</span>
+                            </div>
+                            <h3 class="project-title">[Analysis Framework Project]</h3>
+                            <p class="project-description">
+                                Created a comprehensive analytical framework for [specific application]. 
+                                The framework has been adopted by [organizations/researchers] and continues 
+                                to facilitate research in [domain].
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Framework</span>
+                                <span class="tag">Open Source</span>
+                                <span class="tag">Community</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-book"></i> Docs
+                                </a>
+                                <a href="#" class="project-link secondary">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Upcoming Projects
+                </h2>
+                <p class="category-description">
+                    Exciting new directions in research currently in planning stages
+                </p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <span class="project-status status-upcoming">Upcoming</span>
+                            </div>
+                            <h3 class="project-title">[Future Project Title]</h3>
+                            <p class="project-description">
+                                Planning a comprehensive investigation into [emerging topic]. This project 
+                                will explore [research questions] using state-of-the-art methodologies and 
+                                collaborative networks across institutions.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">In Planning</span>
+                                <span class="tag">Grant Submitted</span>
+                                <span class="tag">Innovative</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">
+                                    <i class="fas fa-envelope"></i> Contact
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>[Your Name]</h3>
+                    <p>[Your Title/Position]</p>
+                    <p>[Your Institution]</p>
+                    <p>Email: <a href="mailto:your.email@institution.edu">your.email@institution.edu</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=yourid" target="_blank" aria-label="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://orcid.org/your-orcid" target="_blank" aria-label="ORCID">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

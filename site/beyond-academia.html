@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Academia - [Your Name]</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .beyond-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 5rem 0;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .beyond-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .beyond-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .passion-section {
+            padding: 5rem 0;
+        }
+
+        .passion-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .passion-intro p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .passions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .passion-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border-color);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .passion-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .passion-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .passion-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .passion-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .passion-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .passion-link:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+        }
+
+        .youtube-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .youtube-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .youtube-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .youtube-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .youtube-description {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .youtube-description h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .youtube-description h3 i {
+            color: #ff0000;
+        }
+
+        .youtube-description p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .yt-stat {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--bg-accent);
+            border-radius: 10px;
+        }
+
+        .yt-stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .yt-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .youtube-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background-color: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .youtube-cta:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .youtube-videos {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .video-thumbnail::after {
+            content: '▶';
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.7;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Other Interests */
+        .interests-mosaic {
+            padding: 5rem 0;
+        }
+
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .mosaic-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .mosaic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mosaic-card i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .mosaic-card h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .mosaic-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .youtube-content {
+                grid-template-columns: 1fr;
+            }
+
+            .youtube-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">[Your Name]</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="publications.html" class="nav-link">Publications</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="beyond-academia.html" class="nav-link active">Beyond Academia</a></li>
+                <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="beyond-hero">
+        <div class="container">
+            <h1>Beyond Academia</h1>
+            <p>
+                Life is not just about research papers and conferences. Here's a glimpse into 
+                my creative pursuits, hobbies, and the things that fuel my curiosity beyond the lab.
+            </p>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="passion-section">
+        <div class="container">
+            <div class="passion-intro">
+                <p>
+                    While my academic work occupies much of my time, I believe that diverse experiences 
+                    and creative outlets enrich both my personal life and my professional perspective. 
+                    These passions keep me balanced, inspired, and constantly learning.
+                </p>
+                <p>
+                    From creating content that makes complex ideas accessible to exploring the art of 
+                    storytelling through video, these pursuits remind me that knowledge and creativity 
+                    are deeply interconnected.
+                </p>
+            </div>
+
+            <div class="passions-grid">
+                <div class="passion-card">
+                    <div class="passion-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>Content Creation</h3>
+                    <p>
+                        Creating educational and engaging content on YouTube, breaking down complex 
+                        research topics into accessible narratives that inspire curiosity and learning.
+                    </p>
+                    <a href="#youtube-section" class="passion-link">Explore My Channel</a>
+                </div>
+
+                <div class="passion-card">
+                    <div class="passion-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Editing</h3>
+                    <p>
+                        The art of visual storytelling through editing—transforming raw footage into 
+                        compelling narratives that educate, entertain, and engage audiences.
+                    </p>
+                    <a href="#" class="passion-link">View Portfolio</a>
+                </div>
+
+                <div class="passion-card">
+                    <div class="passion-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Photography</h3>
+                    <p>
+                        Capturing moments through the lens, from scientific visualization to creative 
+                        photography, finding beauty in both the microscopic and the magnificent.
+                    </p>
+                    <a href="#" class="passion-link">View Gallery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section class="youtube-section" id="youtube-section">
+        <div class="container">
+            <div class="youtube-header">
+                <h2>My YouTube Journey</h2>
+                <p>Bridging the gap between academia and public understanding through video</p>
+            </div>
+
+            <div class="youtube-content">
+                <div class="youtube-description">
+                    <h3><i class="fab fa-youtube"></i> [@YourChannelName]</h3>
+                    <p>
+                        My YouTube channel is a space where I share my passion for [Your Field] with 
+                        a broader audience. Through carefully crafted videos, I break down complex 
+                        research concepts, share insights from my academic journey, and explore the 
+                        fascinating intersections of science and everyday life.
+                    </p>
+                    <p>
+                        From in-depth explanations of cutting-edge research to behind-the-scenes looks 
+                        at academic life, my channel aims to make knowledge accessible and inspire the 
+                        next generation of researchers and curious minds.
+                    </p>
+
+                    <div class="youtube-stats">
+                        <div class="yt-stat">
+                            <div class="yt-stat-number">[XX]K</div>
+                            <div class="yt-stat-label">Subscribers</div>
+                        </div>
+                        <div class="yt-stat">
+                            <div class="yt-stat-number">[XX]</div>
+                            <div class="yt-stat-label">Videos</div>
+                        </div>
+                        <div class="yt-stat">
+                            <div class="yt-stat-number">[XX]M</div>
+                            <div class="yt-stat-label">Views</div>
+                        </div>
+                    </div>
+
+                    <a href="https://youtube.com/@yourchannel" target="_blank" class="youtube-cta">
+                        <i class="fab fa-youtube"></i>
+                        Subscribe to My Channel
+                    </a>
+                </div>
+
+                <div class="youtube-videos">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <h4>Understanding [Research Topic]: Explained</h4>
+                            <p>[XXX]K views • [X] months ago</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <h4>A Day in the Life of a Researcher</h4>
+                            <p>[XXX]K views • [X] months ago</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <h4>How to [Skill/Topic] - Tutorial Series</h4>
+                            <p>[XXX]K views • [X] months ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Interests -->
+    <section class="interests-mosaic">
+        <div class="container">
+            <h2 class="section-title">Other Passions & Hobbies</h2>
+            
+            <div class="mosaic-grid">
+                <div class="mosaic-card">
+                    <i class="fas fa-book-open"></i>
+                    <h4>Science Communication</h4>
+                    <p>
+                        Writing articles and creating content that makes research accessible to 
+                        broader audiences, fostering public engagement with science.
+                    </p>
+                </div>
+
+                <div class="mosaic-card">
+                    <i class="fas fa-podcast"></i>
+                    <h4>Podcasting</h4>
+                    <p>
+                        Hosting conversations with fellow researchers and thought leaders, exploring 
+                        ideas that shape our understanding of the world.
+                    </p>
+                </div>
+
+                <div class="mosaic-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Teaching & Mentorship</h4>
+                    <p>
+                        Passionate about guiding students and early-career researchers, helping them 
+                        develop skills and navigate their academic journeys.
+                    </p>
+                </div>
+
+                <div class="mosaic-card">
+                    <i class="fas fa-running"></i>
+                    <h4>Fitness & Wellness</h4>
+                    <p>
+                        Maintaining physical and mental health through regular exercise, mindfulness, 
+                        and outdoor activities—essential for sustainable productivity.
+                    </p>
+                </div>
+
+                <div class="mosaic-card">
+                    <i class="fas fa-music"></i>
+                    <h4>Music</h4>
+                    <p>
+                        Finding inspiration and relaxation in music, whether listening, playing, or 
+                        exploring how sound shapes human experience.
+                    </p>
+                </div>
+
+                <div class="mosaic-card">
+                    <i class="fas fa-globe"></i>
+                    <h4>Travel & Culture</h4>
+                    <p>
+                        Exploring different cultures and perspectives through travel, enriching both 
+                        personal worldview and collaborative research opportunities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="passion-section" style="padding-top: 0;">
+        <div class="container">
+            <div class="passion-intro">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Let's Connect!</h2>
+                <p>
+                    Whether you're interested in collaborating on research, discussing ideas, or just 
+                    want to chat about YouTube, video editing, or any shared interests—I'd love to hear from you!
+                </p>
+                <a href="mailto:your.email@institution.edu" class="passion-link" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>[Your Name]</h3>
+                    <p>[Your Title/Position]</p>
+                    <p>[Your Institution]</p>
+                    <p>Email: <a href="mailto:your.email@institution.edu">your.email@institution.edu</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=yourid" target="_blank" aria-label="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://orcid.org/your-orcid" target="_blank" aria-label="ORCID">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
