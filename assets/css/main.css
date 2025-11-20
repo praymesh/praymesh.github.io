@@ -19,42 +19,42 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #0a192f; /* Dark blue background */
-  --default-color: #ccd6f6; /* Light blue/gray text */
-  --heading-color: #64ffda; /* Neon green accent */
-  --accent-color: #64ffda; /* Neon green accent */
-  --surface-color: #112240; /* Lighter navy for cards/surfaces */
-  --contrast-color: #0a192f; /* Dark blue for text on light backgrounds */
-  --contrast-color-rgb: 10, 25, 47; /* RGB values for --contrast-color */
+  --background-color: #0f172a; /* Slate 900 */
+  --default-color: #cbd5e1; /* Slate 300 */
+  --heading-color: #f1f5f9; /* Slate 100 */
+  --accent-color: #60a5fa; /* Blue 400 */
+  --surface-color: #1e293b; /* Slate 800 */
+  --contrast-color: #0f172a; /* Dark blue for text on light backgrounds */
+  --contrast-color-rgb: 15, 23, 42; /* RGB values for --contrast-color */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #8892b0;  /* The default color of the main navmenu links */
-  --nav-hover-color: #64ffda; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #0a192f; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #112240; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #8892b0; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #64ffda; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #94a3b8;  /* Slate 400 */
+  --nav-hover-color: #60a5fa; /* Blue 400 */
+  --nav-mobile-background-color: #0f172a; 
+  --nav-dropdown-background-color: #1e293b; 
+  --nav-dropdown-color: #94a3b8; 
+  --nav-dropdown-hover-color: #60a5fa; 
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f5f5f5;
+  --background-color: #f8f9fa;
   --surface-color: #ffffff;
-  --default-color: #333333;
-  --heading-color: #0a192f;
-  --contrast-color-rgb: 10, 25, 47; /* RGB values for dark contrast color in light theme */
+  --default-color: #4a5568;
+  --heading-color: #1a202c;
+  --contrast-color-rgb: 15, 23, 42; 
 }
 
 .dark-background {
-  --background-color: #040b14;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #151f2b;
+  --background-color: #0f172a;
+  --default-color: #cbd5e1;
+  --heading-color: #f1f5f9;
+  --surface-color: #1e293b;
   --contrast-color: #ffffff;
-  --contrast-color-rgb: 255, 255, 255; /* RGB values for white contrast color */
+  --contrast-color-rgb: 255, 255, 255; 
 }
 
 /* Smooth scroll */
@@ -278,17 +278,19 @@ h6 {
 
 /* Light Mode Overrides */
 body.light-mode {
-  --background-color: #f5f5f5;
-  --default-color: #333333;
-  --heading-color: #0a192f;
-  --surface-color: #ffffff;
-  --accent-color: #0056b3; /* Darker blue for light mode accent */
+  --background-color: #ffffff;
+  --default-color: #4a5568; /* Gray 700 */
+  --heading-color: #1a202c; /* Gray 900 */
+  --surface-color: #f1f5f9; /* Gray 100 - Increased contrast */
+  --accent-color: #2563eb; /* Blue 600 */
   --contrast-color: #ffffff;
+  --nav-color: #4a5568;
+  --nav-hover-color: #2563eb;
 }
 
 body.light-mode .header {
   background-color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 body.light-mode .navmenu a:before {
@@ -485,6 +487,7 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%);
 }
 
 #tsparticles {
@@ -498,12 +501,473 @@ section,
 }
 
 .hero:before {
-  content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 70%);
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  display: none;
 }
+
+.hero-image .img-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--accent-color);
+  box-shadow: 20px 20px 0 rgba(100, 255, 218, 0.1);
+  transition: all 0.3s ease;
+  max-width: 300px; /* Reduced size */
+  margin: 0 auto;
+}
+
+/*--------------------------------------------------------------
+# Alternating Backgrounds
+--------------------------------------------------------------*/
+.alt-background {
+  background-color: var(--surface-color);
+}
+
+.light-background {
+  background-color: var(--background-color); /* Reset to default if needed, or keep distinct */
+}
+
+/* Ensure alternating pattern */
+section:nth-of-type(even) {
+  background-color: var(--surface-color);
+}
+
+section:nth-of-type(odd) {
+  background-color: var(--background-color);
+}
+
+/*--------------------------------------------------------------
+# Experience Section (Timeline Style)
+--------------------------------------------------------------*/
+.experience-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.experience-item {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0;
+}
+
+.exp-date {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-weight: 600;
+}
+
+.exp-org {
+  font-size: 1rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.exp-duration {
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 0.8rem;
+}
+
+.exp-description {
+  color: var(--default-color);
+  line-height: 1.6;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.exp-description ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+.exp-description li {
+  margin-bottom: 0.4rem;
+}
+
+/*--------------------------------------------------------------
+# Education Section
+--------------------------------------------------------------*/
+.education-card {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education-degree {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0;
+}
+
+.education-institution {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+/*--------------------------------------------------------------
+# Skills Section (Grid Style)
+--------------------------------------------------------------*/
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skill-category {
+  background-color: var(--surface-color);
+  padding: 1.3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.skill-category h3 {
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-category h3 i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  padding: 0.4rem 0.9rem;
+  background-color: rgba(96, 165, 250, 0.1);
+  color: var(--heading-color);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-item:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+/*--------------------------------------------------------------
+# Beyond Academia / Extracurriculars
+--------------------------------------------------------------*/
+.passions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.passion-card {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+.passion-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.passion-photo-placeholder {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.passion-card h3 {
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+}
+
+.passion-card p {
+  color: var(--default-color);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.passion-link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  text-decoration: none;
+  border-radius: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.passion-link:hover {
+  background-color: color-mix(in srgb, var(--accent-color), white 10%);
+  transform: scale(1.05);
+  color: var(--contrast-color);
+}
+
+/* YouTube Section */
+.youtube-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.youtube-description {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.youtube-description h3 {
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.youtube-description h3 i {
+  color: #ff0000;
+}
+
+.youtube-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  margin: 1.2rem 0;
+}
+
+.yt-stat {
+  text-align: center;
+  padding: 0.7rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 7px;
+}
+
+.yt-stat-number {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.yt-stat-label {
+  font-size: 0.75rem;
+  color: var(--default-color);
+  text-transform: uppercase;
+}
+
+.youtube-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.7rem;
+  background-color: #ff0000;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 22px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-top: 0.7rem;
+}
+
+.youtube-cta:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+  color: #ffffff;
+}
+
+.youtube-videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.video-card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.video-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-thumbnail {
+  width: 120px;
+  height: 90px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.video-info {
+  padding: 1rem;
+}
+
+.video-info h4 {
+  font-size: 1rem;
+  color: var(--heading-color);
+  margin-bottom: 0.4rem;
+}
+
+.video-info p {
+  font-size: 0.85rem;
+  color: var(--default-color);
+  margin: 0;
+}
+
+/* Mosaic Grid */
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.mosaic-card {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.mosaic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.mosaic-card i {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.8rem;
+}
+
+.mosaic-card h4 {
+  font-size: 1.2rem;
+  color: var(--heading-color);
+  margin-bottom: 0.7rem;
+}
+
+.mosaic-card p {
+  color: var(--default-color);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .youtube-content {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .hero .container {
   position: relative;
@@ -836,138 +1300,161 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Projects Section
+# Projects Section (Updated Style)
 --------------------------------------------------------------*/
+.projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
 .projects .project-card {
-  background: var(--surface-color);
-  border-radius: 20px;
+  background-color: var(--surface-color);
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
-  transform: perspective(1000px) rotateX(var(--card-rotation-x, 0deg)) rotateY(var(--card-rotation-y, 0deg));
 }
 
 .projects .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(100, 255, 218, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent-color);
 }
 
 .projects .project-image {
+  width: 100%;
+  height: 180px;
   position: relative;
   overflow: hidden;
-  height: 200px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .projects .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .projects .project-card:hover .project-image img {
-  transform: scale(1.1);
-}
-
-.projects .project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(100, 255, 218, 0.9), rgba(10, 25, 47, 0.9));
-  opacity: 0;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.projects .project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-.projects .project-links {
-  display: flex;
-  gap: 15px;
-}
-
-.projects .project-links a {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 20px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.projects .project-links a:hover {
-  background: var(--accent-color);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .projects .project-content {
-  padding: 25px;
+  padding: 1.5rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.projects .project-content h5 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--heading-color);
-  line-height: 1.3;
-}
-
-.projects .project-content p {
-  color: var(--default-color);
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  flex-grow: 1;
-}
-
-.projects .project-tech {
+.projects .project-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
 }
 
-.projects .tech-tag {
-  background: linear-gradient(135deg, var(--accent-color), #4a9eff);
-  color: #fff;
-  padding: 6px 12px;
+.projects .project-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-@media (max-width: 768px) {
-  .projects .project-image {
-    height: 180px;
-  }
-  
-  .projects .project-content {
-    padding: 20px;
-  }
-  
-  .projects .project-content h5 {
-    font-size: 18px;
-  }
+.projects .status-ongoing {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.projects .status-completed {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.projects .project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.projects .project-description {
+  color: var(--default-color);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.projects .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.projects .tag {
+  padding: 0.3rem 0.8rem;
+  background-color: rgba(96, 165, 250, 0.1);
+  color: var(--accent-color);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.projects .project-links {
+  display: flex;
+  gap: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projects .project-link {
+  flex: 1;
+  padding: 0.6rem;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.projects .project-link.primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.projects .project-link.primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), white 10%);
+  transform: translateY(-2px);
+}
+
+.projects .project-link.secondary {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.projects .project-link.secondary:hover {
+  background-color: rgba(96, 165, 250, 0.1);
+  transform: translateY(-2px);
 }
 .portfolio .portfolio-filters {
   padding: 0;

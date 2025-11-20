@@ -309,13 +309,13 @@
         },
         particles: {
           color: {
-            value: 'rgba(255, 207, 86, 1)'
+            value: '#60a5fa'
           },
           links: {
-            color: '#ffffff',
+            color: '#cbd5e1',
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.4,
             width: 1
           },
           collisions: {
@@ -328,7 +328,7 @@
               default: 'bounce'
             },
             random: false,
-            speed: 2,
+            speed: 0.5,
             straight: false
           },
           number: {
@@ -336,7 +336,7 @@
               enable: true,
               area: 800
             },
-            value: 80
+            value: 40
           },
           opacity: {
             value: 0.5
@@ -345,7 +345,7 @@
             type: 'circle'
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 3 },
           }
         },
         detectRetina: true
