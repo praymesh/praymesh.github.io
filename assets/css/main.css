@@ -20,41 +20,47 @@
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
   --background-color: #0f172a; /* Slate 900 */
-  --default-color: #cbd5e1; /* Slate 300 */
-  --heading-color: #f1f5f9; /* Slate 100 */
+  --default-color: #e2e8f0; /* Slate 200 - Increased brightness for readability */
+  --heading-color: #f8fafc; /* Slate 50 - Brighter headings */
   --accent-color: #60a5fa; /* Blue 400 */
   --surface-color: #1e293b; /* Slate 800 */
   --contrast-color: #0f172a; /* Dark blue for text on light backgrounds */
   --contrast-color-rgb: 15, 23, 42; /* RGB values for --contrast-color */
+  --card-border-color: rgba(255, 255, 255, 0.2); /* Increased visibility for dark mode default */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #94a3b8;  /* Slate 400 */
+  --nav-color: #cbd5e1;  /* Slate 300 */
   --nav-hover-color: #60a5fa; /* Blue 400 */
   --nav-mobile-background-color: #0f172a; 
   --nav-dropdown-background-color: #1e293b; 
-  --nav-dropdown-color: #94a3b8; 
+  --nav-dropdown-color: #cbd5e1; 
   --nav-dropdown-hover-color: #60a5fa; 
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f8f9fa;
+  --background-color: #f8fafc; /* Slate 50 */
   --surface-color: #ffffff;
-  --default-color: #4a5568;
-  --heading-color: #1a202c;
+  --default-color: #334155; /* Slate 700 - Darker for better contrast */
+  --heading-color: #0f172a; /* Slate 900 */
   --contrast-color-rgb: 15, 23, 42; 
+  --card-border-color: #cbd5e1; /* Slate 300 - Distinct border for light mode */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .dark-background {
   --background-color: #0f172a;
-  --default-color: #cbd5e1;
-  --heading-color: #f1f5f9;
+  --default-color: #e2e8f0;
+  --heading-color: #f8fafc;
   --surface-color: #1e293b;
   --contrast-color: #ffffff;
   --contrast-color-rgb: 255, 255, 255; 
+  --card-border-color: rgba(255, 255, 255, 0.2); /* More visible white border */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* Smooth scroll */
@@ -441,7 +447,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 10px 0;
+  padding: 40px 0; /* Increased vertical padding for better breathing room, but balanced */
   overflow: clip;
 }
 
@@ -449,15 +455,15 @@ section,
 # Global Section Titles
 --------------------------------------------------------------*/
 .section-title {
-  padding-bottom: 60px;
+  padding-bottom: 40px; /* Reduced from 60px to remove excessive gap */
   position: relative;
 }
 
 .section-title h2 {
-  font-size: 36px; /* Increased from 32px */
+  font-size: 32px; /* Slightly reduced for better proportion on mobile */
   font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   position: relative;
 }
 
@@ -548,8 +554,8 @@ section:nth-of-type(odd) {
   padding: 1.5rem;
   border-radius: 10px;
   margin-bottom: 1.2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
   transition: all 0.3s ease;
 }
 
@@ -617,8 +623,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
   margin-bottom: 1.2rem;
   transition: all 0.3s ease;
   max-width: 900px;
@@ -672,8 +678,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   padding: 1.3rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
   transition: all 0.3s ease;
 }
 
@@ -711,7 +717,7 @@ section:nth-of-type(odd) {
   font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border-color);
 }
 
 .skill-item:hover {
@@ -733,8 +739,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
   transition: all 0.4s ease;
   text-align: center;
 }
@@ -804,8 +810,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
 }
 
 .youtube-description h3 {
@@ -879,7 +885,7 @@ section:nth-of-type(odd) {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border-color);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -931,7 +937,7 @@ section:nth-of-type(odd) {
   padding: 2rem;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border-color);
   transition: all 0.3s ease;
 }
 
@@ -1312,8 +1318,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
   transition: all 0.4s ease;
   height: 100%;
   display: flex;
@@ -1745,11 +1751,12 @@ section:nth-of-type(odd) {
   background: var(--surface-color);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   text-align: center;
   transition: all 0.3s ease;
   height: 100%;
   margin-bottom: 40px;
+  border: 1px solid var(--card-border-color);
 }
 
 .contact .info-item:hover {
@@ -1788,7 +1795,8 @@ section:nth-of-type(odd) {
   background-color: var(--surface-color);
   height: 100%;
   padding: 30px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
 }
 
 @media (max-width: 575px) {
@@ -2030,7 +2038,8 @@ section:nth-of-type(odd) {
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -2121,7 +2130,8 @@ section:nth-of-type(odd) {
   border-radius: 16px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
 }
 
 .interests .interest-card:hover {

@@ -284,7 +284,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('tsparticles')) {
       tsParticles.load('tsparticles', {
-        fpsLimit: 120,
+        fpsLimit: 60, // Reduced from 120 for better performance
         interactivity: {
           events: {
             onHover: {
@@ -336,7 +336,7 @@
               enable: true,
               area: 800
             },
-            value: 40
+            value: 30 // Reduced from 40
           },
           opacity: {
             value: 0.5
