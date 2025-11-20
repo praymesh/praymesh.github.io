@@ -32,39 +32,30 @@
 
 <body class="index-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Pranay Meshram</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#pranay" class="active">Home</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="bi bi-moon"></i>
+      </button>
+
     </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="assets/img/logo.png" alt=""> -->
-      
-      <h1 class="sitename">Pranay Meshram </h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/praymesh/" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://discord.com/invite/P3T7s9WrjX" class="discord"><i class="bi bi-discord"></i></a>
-      <a href="https://www.youtube.com/@praymesh" class="youtube"><i class="bi bi-youtube"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#pranay" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#skills"><i class="bi bi-gear navicon"></i> Skills</a></li>
-        <li><a href="#projects"><i class="bi bi-images navicon"></i> Projects</a></li>
-        <li><a href="#youtube"><i class="bi bi-hdd-stack navicon"></i> YouTube</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
-    </nav>
-
   </header>
 
   <main class="main">
@@ -73,38 +64,117 @@
     <section id="pranay" class="hero section dark-background">
       <div id="tsparticles"></div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2><span class="hii">Hii,</span><br><span class="name-animate">I'm Pranay Meshram</span></h2>
-        <p>a <span class="typed" data-typed-items="Student, Tech-psycho, Developer, ML/AI Enthusiast, Freelancer "></span></p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          <a href="https://github.com/praymesh/" class="github"><i class="bi bi-github"></i></a>
-          <a href="https://discord.com/invite/P3T7s9WrjX" class="discord"><i class="bi bi-discord"></i></a>
-          <a href="https://www.youtube.com/@praymesh" class="youtube"><i class="bi bi-youtube"></i></a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Hello, I'm <span class="highlight">Pranay Meshram</span></h1>
+                <p class="subtitle">Researcher | Computer Vision Enthusiast | AI/ML Developer</p>
+                <p class="bio">
+                    I'm Pranay, a 3rd-year UG student at the <strong>Indian Institute of Science Education and Research (IISER) Bhopal</strong>, with a deep and growing interest in <strong>Computer Vision and Machine Learning</strong>. My current research involves using <strong>Vision Language Models for segmentation tasks and control in Autonomous Navigation</strong> at <strong>MuSiC Lab, IISER Bhopal</strong>.
+                </p>
+                <div class="social-links">
+                  <a href="https://www.linkedin.com/in/pranay-meshramiiserb/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://github.com/praymesh/" class="github"><i class="bi bi-github"></i></a>
+                  <a href="https://discord.com/invite/P3T7s9WrjX" class="discord"><i class="bi bi-discord"></i></a>
+                  <a href="https://www.youtube.com/@praymesh" class="youtube"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="img-wrapper">
+                    <img src="assets/img/my-profile-img.jpg" alt="Pranay Meshram">
+                </div>
+            </div>
         </div>
       </div>
-
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
+    <!-- Publications Section -->
+    <section id="publications" class="publications section">
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-      </div><!-- End Section Title -->
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-4">
-            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <p>Hii there! I'm Pranay, a 3rd-year UG student at the Indian Institute of Science Education and Research (IISER) Bhopal, with a deep and growing interest in Computer Vision and Machine Learning. My current research involves using <span class="highlight">Vision Language Models</span> for segmentation tasks and control in Autonomous Navigation at <a href="https://sites.google.com/view/arijitsen1729/music-lab/" target="_blank" class="highlight">MuSiC Lab, IISER Bhopal</a>. . I'm also working on <span class="highlight">Visual Place Recognition (VPR) and image geolocalization at IIT Roorkee</span> under the guidance of <a href="https://sites.google.com/view/gauravnayak/" target="_blank" class="highlight">Dr. Gaurav Kumar Nayak</a>. Over the past year, I have worked on various projects, including building models from scratch like <span class="highlight">PaliGemma, ViT, and Transformers</span>, fine-tuning LLMs like LLaMA 2 using LoRA and quantization, and deploying real-time ML models on Raspberry Pi using thermal imagery.  I've always been fascinated by the idea of machines that can learn, see, and create something that we imagine in our minds. I'm passionate about using AI to solve real-world problems creatively, and I'm actively seeking research/project opportunities. Beyond Academics, I am also a part of the EECS CLUB at IISER Bhopal, where I have worked on various projects and events. I have a keen interest in robotics and electronics, and I enjoy creating fun and creative content.</p>
-          </div>
-        </div>
+        <h2>Publications</h2>
+        <p>A comprehensive collection of my research contributions.</p>
       </div>
       
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Journal Articles</button>
+            <button class="filter-btn">Conference Papers</button>
+            <button class="filter-btn">Book Chapters</button>
+            <button class="filter-btn">Preprints</button>
+        </div>
 
-    </section><!-- /About Section -->
+        <!-- 2025 Publications -->
+        <div class="year-section">
+            <div class="year-heading">
+                <i class="bi bi-calendar-event"></i> 2025
+            </div>
+            
+            <div class="publication-card">
+                <div class="pub-header">
+                    <span class="pub-type">ICCV Workshop Paper</span>
+                    <span class="pub-date">2025</span>
+                </div>
+                <div class="pub-content">
+                    <h3>COMBAT: Conditional World Models for Behavioral Agent Training</h3>
+                    <p class="pub-authors">
+                        Anmol Agarwal, <strong>Pranay Meshram</strong>, Sumer Singh, Saurav Suman, Andrew Lapp, Shahbuland Matiana, Louis Castricato, Spencer Frazier
+                    </p>
+                    <p class="pub-venue">
+                        International Conference on Computer Vision 2025, Workshop on Reliable and Interactive World Models (Non-Archival)
+                    </p>
+                    <div class="pub-links">
+                        <a href="https://openreview.net/forum?id=i7afmqzE4b" target="_blank" class="pub-link">
+                            <i class="bi bi-link-45deg"></i> OpenReview
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </section><!-- /Publications Section -->
+
+    <!-- Research Interests Section -->
+    <section id="interests" class="interests section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Research Interests</h2>
+        <p>My primary research interests lie at the intersection of Computer Vision and Machine Learning.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="interest-grid">
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="bi bi-globe"></i>
+                </div>
+                <h3>World Models</h3>
+                <p>Building models that can understand and simulate the physical world for better planning and control.</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="bi bi-eye"></i>
+                </div>
+                <h3>Vision Language Models</h3>
+                <p>Exploring the synergy between vision and language for multimodal understanding and reasoning.</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+                <h3>Visual Place Recognition</h3>
+                <p>Developing robust localization systems for autonomous navigation in challenging environments.</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="bi bi-cpu"></i>
+                </div>
+                <h3>Diffusion Models</h3>
+                <p>Investigating generative models for data augmentation and creative applications.</p>
+            </div>
+        </div>
+      </div>
+    </section><!-- /Research Interests Section -->
 
     <!-- Resume Section -->
       <!-- Section Title -->
@@ -173,7 +243,8 @@
       </div>
     </section> --> <!-- /Resume Section -->
 
-    <!-- Skills Section -->
+    <!-- Resume Section -->
+      <!-- Section Title -->    <!-- Skills Section -->
     <section id="skills" class="skills section light-background">
       <div class="container section-title" data-aos="fade-up">
         <h2>Skills</h2>
@@ -428,7 +499,7 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>

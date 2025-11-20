@@ -10,28 +10,49 @@
   "use strict";
 
   /**
-   * Header toggle
+   * Mobile nav toggle
    */
-  const headerToggleBtn = document.querySelector('.header-toggle');
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-  function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
+  function mobileNavToggle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    document.querySelector('.navmenu').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  headerToggleBtn.addEventListener('click', headerToggle);
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', mobileNavToggle);
+  }
 
   /**
    * Hide mobile nav on same-page/hash links
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
+      if (document.querySelector('.mobile-nav-active')) {
+        mobileNavToggle();
       }
     });
-
   });
+
+  /**
+   * Theme Toggle
+   */
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+  
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        themeIcon.classList.remove('bi-moon');
+        themeIcon.classList.add('bi-sun');
+      } else {
+        themeIcon.classList.remove('bi-sun');
+        themeIcon.classList.add('bi-moon');
+      }
+    });
+  }
 
   /**
    * Toggle mobile nav dropdowns
