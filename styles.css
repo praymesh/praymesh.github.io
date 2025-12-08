@@ -22,27 +22,31 @@
     --footer-bg: #020617;
     --footer-text: #9ca3af;
     --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    --bg-gradient-1: rgba(139, 92, 246, 0.08);
+    --bg-gradient-2: rgba(34, 211, 238, 0.08);
 }
 
 [data-theme="light"] {
-    /* Light Mode Colors (Clean Indigo Theme) */
+    /* Light Mode Colors (Vibrant Indigo Theme) */
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --bg-accent: #f1f5f9;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
+    --bg-secondary: #f0f4f8; /* Slightly cooler grey */
+    --bg-accent: #e2e8f0;
+    --text-primary: #1e293b; /* Slate 800 */
+    --text-secondary: #475569; /* Slate 600 */
     --text-muted: #64748b;
-    --accent-color: #4f46e5; /* Indigo */
-    --accent-hover: #4338ca;
-    --highlight-color: #0ea5e9; /* Sky blue */
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --accent-color: #6366f1; /* Indigo 500 - Vibrant */
+    --accent-hover: #4f46e5;
+    --highlight-color: #0ea5e9; /* Sky 500 */
+    --border-color: #cbd5e1;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(99, 102, 241, 0.1), 0 2px 4px -1px rgba(99, 102, 241, 0.06); /* Colored shadow */
+    --shadow-lg: 0 10px 15px -3px rgba(99, 102, 241, 0.1), 0 4px 6px -2px rgba(99, 102, 241, 0.05); /* Colored shadow */
     --card-bg: #ffffff;
     --footer-bg: #f8fafc;
     --footer-text: #475569;
-    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%);
+    --bg-gradient-1: rgba(99, 102, 241, 0.04); /* Very subtle indigo */
+    --bg-gradient-2: rgba(14, 165, 233, 0.04); /* Very subtle sky */
 }
 
 /* ============================================
@@ -65,8 +69,8 @@ body {
     line-height: 1.7;
     transition: background-color 0.3s ease, color 0.3s ease;
     background-image: 
-        radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(34, 211, 238, 0.08), transparent 25%);
+        radial-gradient(circle at 15% 50%, var(--bg-gradient-1), transparent 25%),
+        radial-gradient(circle at 85% 30%, var(--bg-gradient-2), transparent 25%);
     background-attachment: fixed;
 }
 
