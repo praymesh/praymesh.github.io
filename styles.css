@@ -18,6 +18,7 @@
     --highlight-color: #ffffff;
     --accent-text: #000000; /* Text on accent background */
     --link-color: #60a5fa; /* Soft Blue for Links */
+    --text-bold: #e2e8f0; /* Soft White for bold text */
     
     --border-color: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.08);
@@ -60,6 +61,7 @@
     --highlight-color: #0ea5e9; /* Sky */
     --accent-text: #ffffff;
     --link-color: #7c3aed;
+    --text-bold: #1e293b; /* Dark Slate for bold text */
     
     --border-color: rgba(0, 0, 0, 0.08);
     --glass-border: rgba(0, 0, 0, 0.05);
@@ -310,6 +312,15 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 750px; /* Extended width */
     border-left: 2px solid var(--accent-color);
     padding-left: 1.5rem;
+}
+
+.hero-description strong {
+    color: var(--text-bold); /* Brighter than surrounding text but not harsh */
+    font-weight: 700;
+}
+
+.hero-description a strong {
+    color: var(--link-color); /* Ensure links keep their distinct color */
 }
 
 .hero-social {
