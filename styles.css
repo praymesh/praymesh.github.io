@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    /* Dark Mode - "Cyber-Holographic" */
+    /* Dark Mode - "Onyx & Silver" (Clean, Monochrome, Premium) */
     --bg-primary: #050505;
     --bg-secondary: #0a0a0a;
     --bg-accent: #141414;
@@ -12,30 +12,42 @@
     --text-secondary: #a1a1aa;
     --text-muted: #52525b;
     
-    /* Neon Accents */
-    --accent-color: #b026ff; /* Neon Purple */
-    --accent-hover: #d946ef; /* Fuchsia */
-    --highlight-color: #00f0ff; /* Cyan */
+    /* Accents - Subtle & Classy */
+    --accent-color: #ffffff; /* Pure White Accent */
+    --accent-hover: #e2e8f0; /* Light Gray */
+    --highlight-color: #ffffff;
+    --accent-text: #000000; /* Text on accent background */
+    --link-color: #60a5fa; /* Soft Blue for Links */
     
     --border-color: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.08);
     
-    --shadow-sm: 0 0 20px rgba(176, 38, 255, 0.15);
-    --shadow-md: 0 0 40px rgba(176, 38, 255, 0.2);
-    --shadow-lg: 0 0 60px rgba(0, 240, 255, 0.2);
+    /* iOS Style Blurry Shadows */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
     
-    --card-bg: rgba(20, 20, 20, 0.6);
+    --card-bg: rgba(30, 30, 30, 0.9); /* Lighter & Opaque for better readability */
     --glass-bg: rgba(5, 5, 5, 0.8);
     
     --radius-md: 16px;
     --radius-lg: 32px;
     
-    --gradient-text: linear-gradient(to right, #b026ff, #00f0ff);
-    --gradient-border: linear-gradient(135deg, rgba(176, 38, 255, 0.5), rgba(0, 240, 255, 0.5));
+    /* Monochrome Gradients for Dark Mode */
+    --gradient-text: linear-gradient(to right, #ffffff, #94a3b8); /* White to Silver */
+    --gradient-border: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    
+    /* Subtle Background Blobs */
+    --blob-color-1: rgba(255, 255, 255, 0.03);
+    --blob-color-2: rgba(255, 255, 255, 0.03);
+
+    /* Featured Project Colors */
+    --featured-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --featured-text: #ffffff;
 }
 
 [data-theme="light"] {
-    /* Light Mode - "Prism" */
+    /* Light Mode - "Prism" (Kept exactly as you liked it) */
     --bg-primary: #ffffff;
     --bg-secondary: #f8fafc;
     --bg-accent: #f1f5f9;
@@ -46,19 +58,30 @@
     --accent-color: #7c3aed; /* Violet */
     --accent-hover: #6d28d9;
     --highlight-color: #0ea5e9; /* Sky */
+    --accent-text: #ffffff;
+    --link-color: #7c3aed;
     
     --border-color: rgba(0, 0, 0, 0.08);
     --glass-border: rgba(0, 0, 0, 0.05);
     
-    --shadow-sm: 0 4px 20px rgba(124, 58, 237, 0.1);
-    --shadow-md: 0 8px 30px rgba(124, 58, 237, 0.15);
-    --shadow-lg: 0 12px 40px rgba(14, 165, 233, 0.15);
+    /* iOS Style Blurry Shadows (Light) */
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
     
     --card-bg: rgba(255, 255, 255, 0.8);
     --glass-bg: rgba(255, 255, 255, 0.9);
     
     --gradient-text: linear-gradient(to right, #7c3aed, #0ea5e9);
     --gradient-border: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(14, 165, 233, 0.3));
+    
+    /* Vibrant Background Blobs for Light Mode */
+    --blob-color-1: rgba(176, 38, 255, 0.15);
+    --blob-color-2: rgba(0, 240, 255, 0.15);
+
+    /* Featured Project Colors (Light) */
+    --featured-bg: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%);
+    --featured-text: #ffffff;
 }
 
 /* ============================================
@@ -81,10 +104,22 @@ body {
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
     background-image: 
-        radial-gradient(circle at 0% 0%, rgba(176, 38, 255, 0.15), transparent 40%),
-        radial-gradient(circle at 100% 100%, rgba(0, 240, 255, 0.15), transparent 40%);
+        radial-gradient(circle at 0% 0%, var(--blob-color-1), transparent 40%),
+        radial-gradient(circle at 100% 100%, var(--blob-color-2), transparent 40%);
     background-attachment: fixed;
     overflow-x: hidden;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -191,7 +226,10 @@ h1, h2, h3, h4, h5, h6 {
    Hero Section
    ============================================ */
 .hero {
-    padding: 10rem 0 8rem;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center */
+    padding: 6rem 0 2rem; /* Reduced padding to fit content */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -233,17 +271,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.8fr 1fr; /* Increased text column width */
+    gap: 2rem;
     align-items: center;
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     color: var(--text-primary);
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: -0.04em;
 }
 
@@ -257,19 +295,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-subtitle {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     font-weight: 400;
     font-family: 'Space Grotesk', sans-serif;
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-    max-width: 550px;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    max-width: 750px; /* Extended width */
     border-left: 2px solid var(--accent-color);
     padding-left: 1.5rem;
 }
@@ -356,17 +394,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
-}
-    border: 2px solid var(--accent-color);
-}
-
-.btn-secondary:hover {
     background-color: var(--accent-color);
-    color: #ffffff;
+    color: var(--accent-text);
+    border-color: var(--accent-color);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-image {

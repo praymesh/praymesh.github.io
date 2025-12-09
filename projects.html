@@ -87,7 +87,7 @@
 
         .project-image i {
             font-size: 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--accent-text);
             z-index: 2;
         }
 
@@ -181,7 +181,7 @@
 
         .project-link.primary {
             background-color: var(--accent-color);
-            color: #ffffff;
+            color: var(--accent-text);
         }
 
         .project-link.primary:hover {
@@ -196,7 +196,7 @@
 
         .project-link.secondary:hover {
             background-color: var(--accent-color);
-            color: #ffffff;
+            color: var(--accent-text);
         }
 
         .category-section {
@@ -225,11 +225,11 @@
 
         /* Featured Project */
         .featured-project {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            background: var(--featured-bg);
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 2.5rem;
-            color: #ffffff;
+            color: var(--featured-text);
             box-shadow: var(--shadow-lg);
         }
 
@@ -257,12 +257,16 @@
         }
 
         .featured-project .project-links .project-link {
-            background-color: #ffffff;
-            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--featured-text);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .featured-project .project-links .project-link:hover {
             transform: scale(1.05);
+            background-color: var(--featured-text);
+            color: #000000;
         }
 
         /* Mobile Responsive Styles */
