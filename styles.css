@@ -886,7 +886,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero {
-        padding: 3rem 0;
+        padding: 8rem 0 3rem; /* Increased top padding to prevent navbar overlap */
     }
 
     .hero-title {
@@ -946,7 +946,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero {
-        padding: 2rem 0;
+        padding: 8rem 0 3rem;
     }
 
     .hero-title {
