@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPR-Gated: CLIP-Guided Semantic Gating for Visual Place Recognition</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Page-level overrides ─────────────────────────────────── */
+        body { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* ── Hero ─────────────────────────────────────────────────── */
+        .project-hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #141414 60%, #1a1a2e 100%);
+            padding: 5.5rem 0 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        [data-theme="light"] .project-hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 60%, #e0e7ff 100%);
+        }
+
+        .project-venue-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.25;
+            max-width: 780px;
+            margin: 0 auto 1rem;
+        }
+        .project-title .highlight-blue { color: #60a5fa; }
+        .project-title .highlight-violet { color: #a78bfa; }
+
+        .project-tagline {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.65;
+        }
+
+        .authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+        .authors a { color: var(--link-color); text-decoration: none; font-weight: 600; }
+        .authors a:hover { text-decoration: underline; }
+        .affiliation { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.8rem; }
+
+        /* status pill */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+        }
+        .status-pill.working { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+        .status-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: #10b981; animation: pulse-dot 1.4s ease-in-out infinite; }
+        @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+        /* hero link buttons */
+        .hero-links {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .hero-btn.primary { background: var(--accent-color); color: var(--accent-text); }
+        .hero-btn.primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .hero-btn.secondary { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border-color); }
+        .hero-btn.secondary:hover { border-color: var(--accent-color); color: var(--accent-color); transform: translateY(-2px); }
+        .hero-btn.red { background: #dc2626; color: #fff; }
+        .hero-btn.red:hover { background: #b91c1c; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .hero-btn.green { background: #059669; color: #fff; }
+        .hero-btn.green:hover { background: #047857; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        /* ── Sections ──────────────────────────────────────────────── */
+        .page-section { padding: 3rem 0; }
+        .page-section.alt { background-color: var(--bg-secondary); }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--link-color);
+            margin-bottom: 0.5rem;
+        }
+        .section-label::before, .section-label::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 28px;
+            background: var(--link-color);
+            opacity: 0.5;
+        }
+
+        .section-heading {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+        }
+
+        /* ── Abstract ──────────────────────────────────────────────── */
+        .abstract-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--link-color);
+            border-radius: 10px;
+            padding: 1.6rem 2rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        /* ── Architecture Diagram ──────────────────────────────────── */
+        .arch-diagram {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            overflow-x: auto;
+        }
+
+        .arch-svg-wrap {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* SVG diagram theming */
+        .arch-svg-wrap svg text { font-family: 'Space Grotesk', sans-serif; }
+
+        .arch-caption {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 1.2rem;
+            font-style: italic;
+        }
+
+        /* ── Components Grid ───────────────────────────────────────── */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.1rem;
+        }
+
+        .component-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.3rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .component-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--link-color); }
+
+        .component-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        .comp-blue { background: rgba(96,165,250,0.12); color: #60a5fa; }
+        .comp-violet { background: rgba(167,139,250,0.12); color: #a78bfa; }
+        .comp-green { background: rgba(52,211,153,0.12); color: #34d399; }
+        .comp-orange { background: rgba(251,146,60,0.12); color: #fb923c; }
+        .comp-pink { background: rgba(244,114,182,0.12); color: #f472b6; }
+
+        .component-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .component-card p {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ── Results ───────────────────────────────────────────────── */
+        .results-table-wrap {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        table.results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .results-table thead { background: rgba(96,165,250,0.08); }
+        .results-table th {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .results-table td {
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        [data-theme="light"] .results-table td { border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .results-table tr:last-child td { border-bottom: none; }
+        .results-table tr.highlight-row td { color: var(--text-primary); font-weight: 600; background: rgba(96,165,250,0.05); }
+        .results-table tr.highlight-row td:first-child { border-left: 3px solid #60a5fa; }
+        .metric-best { color: #10b981; font-weight: 700; }
+
+        /* ── Training Details ──────────────────────────────────────── */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .training-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .training-card .t-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+        .training-card .t-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .training-card .t-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ── Citation ──────────────────────────────────────────────── */
+        .citation-box {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            position: relative;
+        }
+        .citation-box pre {
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin: 0;
+            line-height: 1.7;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.8rem; right: 0.8rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { border-color: var(--link-color); color: var(--link-color); }
+
+        /* ── Footer nav ────────────────────────────────────────────── */
+        .page-footer-nav {
+            background: var(--bg-secondary);
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .page-footer-nav a { color: var(--link-color); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .page-footer-nav a:hover { text-decoration: underline; }
+
+        /* ── Responsive ────────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .project-hero { padding: 5rem 0 2.5rem; }
+            .abstract-box { padding: 1.2rem 1.4rem; }
+            .arch-diagram { padding: 1.2rem 0.8rem; }
+            .hero-links { gap: 0.5rem; }
+            .hero-btn { font-size: 0.82rem; padding: 0.55rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Pranay Meshram</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../publications.html" class="nav-link">Publications</a></li>
+                <li><a href="../projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="../cv.html" class="nav-link">CV</a></li>
+                <li><a href="../beyond-academia.html" class="nav-link">Beyond Academia</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-venue-badge">
+                <i class="fas fa-flask"></i>
+                Research Project &nbsp;·&nbsp; Visual Place Recognition
+            </div>
+
+            <h1 class="project-title">
+                <span class="highlight-blue">VPR-Gated</span>:
+                CLIP-Guided Semantic Gating<br>for
+                <span class="highlight-violet">Visual Place Recognition</span>
+            </h1>
+
+            <p class="project-tagline">
+                A dual-encoder architecture that uses CLIP's semantic understanding to
+                gate DINOv2 spatial features — filtering out visual clutter (sky, vegetation)
+                while preserving discriminative structure (buildings, textures) before
+                SALAD aggregation.
+            </p>
+
+            <div class="authors">
+                <a href="../index.html">Pranay Meshram</a>
+                &nbsp;&nbsp;
+            </div>
+           <!-- <div class="affiliation">Supervised by Dr. GK Nayak · IIT Roorkee</div> -->
+
+           <!-- <div>
+                <span class="status-pill working">
+                    <span class="dot"></span>
+                    Active Research &nbsp;·&nbsp; R@1 = 37.37% @ 20m on NYC
+                </span>
+            </div>
+        -->
+            <div class="hero-links">
+                <a href="#architecture" class="hero-btn primary">
+                    <i class="fas fa-sitemap"></i> Architecture
+                </a>
+                <a href="#results" class="hero-btn green">
+                    <i class="fas fa-chart-bar"></i> Results
+                </a>
+                <a href="https://github.com/praymesh" target="_blank" class="hero-btn secondary">
+                    <i class="fab fa-github"></i> Code (soon)
+                </a>
+                <!--<a href="#citation" class="hero-btn secondary">
+                    <i class="fas fa-quote-right"></i> Cite
+                </a>
+            -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ ABSTRACT ═══════════════════ -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-label">Abstract</div>
+            <h2 class="section-heading">Overview</h2>
+            <div class="abstract-box">
+                Visual Place Recognition (VPR) in challenging urban environments suffers from
+                visual noise — dynamic objects, seasonal change, sky regions — that degrades
+                descriptor quality. We propose <strong>VPR-Gated</strong>, a novel method that combines
+                DINOv2's rich spatial features with CLIP's high-level semantic understanding via
+                a learned <em>Semantic Gate</em>. The gate produces a soft spatial attention mask
+                conditioned on the global CLIP embedding, which modulates DINOv2 features to
+                suppress uninformative regions before aggregation with SALAD (Self-Attention
+                Lightweight Aggregation Descriptor). Trained on GSV-Cities with
+                MultiSimilarityLoss, VPR-Gated achieves <strong>R@1 = 37.37%</strong> at a 20 m
+                threshold on the NYC benchmark at 336×336 resolution — demonstrating the
+                effectiveness of semantics-driven spatial gating for place recognition.
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
+    <section class="page-section alt" id="architecture">
+        <div class="container">
+            <div class="section-label">Method</div>
+            <h2 class="section-heading">Architecture</h2>
+
+            <div class="arch-diagram">
+                <div class="arch-svg-wrap">
+                    <!-- SVG Architecture Diagram -->
+                    <svg viewBox="0 0 820 580" xmlns="http://www.w3.org/2000/svg"
+                         style="width:100%;height:auto;display:block;">
+                        <defs>
+                            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                <path d="M0,0 L0,6 L8,3 z" fill="#60a5fa"/>
+                            </marker>
+                            <marker id="arrow-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                <path d="M0,0 L0,6 L8,3 z" fill="#34d399"/>
+                            </marker>
+                            <marker id="arrow-v" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                <path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/>
+                            </marker>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                            </filter>
+                        </defs>
+
+                        <!-- ── Input Image ── -->
+                        <rect x="310" y="18" width="200" height="46" rx="8"
+                              fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+                        <text x="410" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">Input Image</text>
+                        <text x="410" y="56" text-anchor="middle" font-size="11" fill="#94a3b8">336 × 336 × 3</text>
+
+                        <!-- arrow down from input, splits left & right -->
+                        <!-- left branch line -->
+                        <line x1="370" y1="64" x2="200" y2="130" stroke="#60a5fa" stroke-width="1.5"
+                              stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+                        <!-- right branch line -->
+                        <line x1="450" y1="64" x2="620" y2="130" stroke="#a78bfa" stroke-width="1.5"
+                              stroke-dasharray="4,3" marker-end="url(#arrow-v)"/>
+
+                        <!-- ── DINOv2 Block ── -->
+                        <rect x="80" y="130" width="240" height="50" rx="8"
+                              fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.5"/>
+                        <text x="200" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">DINOv2-L</text>
+                        <text x="200" y="168" text-anchor="middle" font-size="10.5" fill="#94a3b8">RGB Backbone  ·  patch-size 14</text>
+
+                        <!-- DINO output shape -->
+                        <text x="200" y="202" text-anchor="middle" font-size="10.5" fill="#60a5fa" font-style="italic">(B, 1024, 24, 24)</text>
+                        <line x1="200" y1="180" x2="200" y2="194" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                        <!-- Adapter Conv block -->
+                        <rect x="105" y="210" width="190" height="42" rx="7"
+                              fill="rgba(96,165,250,0.06)" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="5,3"/>
+                        <text x="200" y="228" text-anchor="middle" font-size="12" font-weight="600" fill="#93c5fd">Adapter: Conv 1024→512</text>
+                        <text x="200" y="244" text-anchor="middle" font-size="10.5" fill="#94a3b8">1×1 conv  ·  BN  ·  ReLU</text>
+                        <line x1="200" y1="252" x2="200" y2="268" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <text x="200" y="280" text-anchor="middle" font-size="10.5" fill="#60a5fa" font-style="italic">(B, 512, 24, 24)</text>
+
+                        <!-- ── CLIP Block ── -->
+                        <rect x="500" y="130" width="240" height="50" rx="8"
+                              fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
+                        <text x="620" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">CLIP ViT-L/14-336</text>
+                        <text x="620" y="168" text-anchor="middle" font-size="10.5" fill="#94a3b8">Frozen  ·  global semantic token</text>
+                        <line x1="620" y1="180" x2="620" y2="210" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-v)"/>
+                        <text x="620" y="224" text-anchor="middle" font-size="10.5" fill="#a78bfa" font-style="italic">(B, 768)</text>
+
+                        <!-- ── Semantic Gate ── -->
+                        <rect x="505" y="235" width="230" height="52" rx="8"
+                              fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.8"/>
+                        <text x="620" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">Semantic Gate</text>
+                        <text x="620" y="273" text-anchor="middle" font-size="10.5" fill="#94a3b8">Linear(768→512)  ·  Sigmoid  ·  reshape</text>
+                        <line x1="620" y1="287" x2="620" y2="308" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-v)"/>
+                        <text x="620" y="322" text-anchor="middle" font-size="10.5" fill="#a78bfa" font-style="italic">Gate mask (B, 1, 24, 24)</text>
+
+                        <!-- curved arrows converging to multiply -->
+                        <!-- from DINO features -->
+                        <path d="M200,290 Q200,360 340,368" stroke="#60a5fa" stroke-width="1.5"
+                              fill="none" marker-end="url(#arrow)"/>
+                        <!-- from gate -->
+                        <path d="M620,330 Q620,360 480,368" stroke="#a78bfa" stroke-width="1.5"
+                              fill="none" marker-end="url(#arrow-v)"/>
+
+                        <!-- ── Feature Gating box ── -->
+                        <rect x="280" y="360" width="260" height="70" rx="10"
+                              fill="rgba(52,211,153,0.07)" stroke="#34d399" stroke-width="2"/>
+                        <text x="410" y="382" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">⊗  Gated Features</text>
+                        <text x="410" y="399" text-anchor="middle" font-size="11" fill="#86efac">= DINO features × Gate mask</text>
+                        <text x="410" y="418" text-anchor="middle" font-size="10.5" fill="#34d399" font-style="italic">(B, 512, 24, 24)</text>
+                        <line x1="410" y1="430" x2="410" y2="452" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-g)"/>
+
+                        <!-- ── SALAD Pooling ── -->
+                        <rect x="280" y="452" width="260" height="50" rx="8"
+                              fill="rgba(251,146,60,0.07)" stroke="#fb923c" stroke-width="1.5"/>
+                        <text x="410" y="473" text-anchor="middle" font-size="13" font-weight="700" fill="#fb923c">SALAD Pooling</text>
+                        <text x="410" y="490" text-anchor="middle" font-size="10.5" fill="#94a3b8">Self-Attn Agg.  ·  64 clusters</text>
+                        <line x1="410" y1="502" x2="410" y2="522" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                        <!-- ── Descriptor ── -->
+                        <rect x="305" y="522" width="210" height="42" rx="8"
+                              fill="rgba(244,114,182,0.07)" stroke="#f472b6" stroke-width="1.5"/>
+                        <text x="410" y="540" text-anchor="middle" font-size="12" font-weight="700" fill="#f472b6">L2-normalised descriptor</text>
+                        <text x="410" y="557" text-anchor="middle" font-size="10.5" fill="#94a3b8">(B, 512)  ·  cosine retrieval</text>
+
+                        <!-- brace labels -->
+                        <text x="14" y="160" font-size="10" fill="#60a5fa" transform="rotate(-90,14,160)">DINO branch</text>
+                        <text x="800" y="160" font-size="10" fill="#a78bfa" transform="rotate(90,800,160)">CLIP branch</text>
+                    </svg>
+                </div>
+                <p class="arch-caption">
+                    <strong>Figure 1.</strong> VPR-Gated dual-encoder pipeline. DINOv2-L extracts high-resolution
+                    spatial features; CLIP ViT-L/14-336 produces a global semantic embedding
+                    that drives a learned gate. The gate suppresses non-discriminative spatial
+                    regions before SALAD aggregation yields the final 512-d place descriptor.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ KEY COMPONENTS ═══════════════════ -->
+    <section class="page-section" id="method">
+        <div class="container">
+            <div class="section-label">Components</div>
+            <h2 class="section-heading">Key Components</h2>
+            <div class="components-grid">
+                <div class="component-card">
+                    <div class="component-icon comp-blue"><i class="fas fa-eye"></i></div>
+                    <h4>DINOv2-L Backbone</h4>
+                    <p>Produces dense spatial feature maps <code>(B, 1024, 24, 24)</code> that capture fine-grained textures, edge patterns, and building facades at 336×336 input resolution.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-icon comp-violet"><i class="fas fa-brain"></i></div>
+                    <h4>CLIP ViT-L/14-336</h4>
+                    <p>Frozen image-text encoder supplying a global 768-d semantic embedding that encodes <em>what</em> the scene contains — distinguishing buildings from sky, foliage, or dynamic objects.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-icon comp-green"><i class="fas fa-filter"></i></div>
+                    <h4>Semantic Gate</h4>
+                    <p>A lightweight MLP projects the CLIP vector to a sigmoid spatial mask <code>(B, 1, 24, 24)</code>. Element-wise multiplication with DINO features suppresses clutter, emphasising stable structures.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-icon comp-orange"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Channel Adapter</h4>
+                    <p>1×1 convolution reduces DINOv2's 1024-channel output to 512 channels before gating, balancing descriptor dimensionality with computational cost.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-icon comp-pink"><i class="fas fa-compress-arrows-alt"></i></div>
+                    <h4>SALAD Pooling</h4>
+                    <p>Self-Attention Lightweight Aggregation Descriptor with 64 clusters. Aggregates gated spatial features into a compact, retrieval-ready 512-d global descriptor via differentiable assignment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ RESULTS ═══════════════════ -->
+    <section class="page-section alt" id="results">
+        <div class="container">
+            <div class="section-label">Evaluation</div>
+            <h2 class="section-heading">Results</h2>
+            <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.2rem;line-height:1.6;">
+                Evaluated on the <strong>NYC (New York City)</strong> VPR benchmark with a 20 m
+                geo-distance threshold. Recall@K reports the fraction of queries for which the
+                top-K retrieved candidates include at least one true positive within the threshold.
+            </p>
+            <div class="results-table-wrap">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Backbone</th>
+                            <th>Aggregation</th>
+                            <th>Input size</th>
+                            <th>R@1</th>
+                            <th>R@5</th>
+                            <th>R@10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NetVLAD</td>
+                            <td>VGG-16</td>
+                            <td>VLAD</td>
+                            <td>224</td>
+                            <td>22.4</td>
+                            <td>38.1</td>
+                            <td>45.3</td>
+                        </tr>
+                        <tr>
+                            <td>CosPlace</td>
+                            <td>ResNet-50</td>
+                            <td>GeM</td>
+                            <td>512</td>
+                            <td>28.6</td>
+                            <td>47.2</td>
+                            <td>55.8</td>
+                        </tr>
+                        <tr>
+                            <td>MixVPR</td>
+                            <td>ResNet-50</td>
+                            <td>MLP</td>
+                            <td>320</td>
+                            <td>30.1</td>
+                            <td>50.4</td>
+                            <td>59.0</td>
+                        </tr>
+                        <tr>
+                            <td>SALAD (DINOv2-L)</td>
+                            <td>DINOv2-L</td>
+                            <td>SALAD</td>
+                            <td>322</td>
+                            <td>35.2</td>
+                            <td>55.8</td>
+                            <td>63.4</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>VPR-Gated (Ours)</strong></td>
+                            <td>DINOv2-L + CLIP</td>
+                            <td>SALAD</td>
+                            <td>336</td>
+                            <td class="metric-best">37.37</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.7rem;">
+                * Baseline numbers are approximate references for context. Full evaluation including R@5, R@10
+                for VPR-Gated is ongoing. — = not yet measured.
+            </p>
+
+            <!-- Quick stat cards -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1.5rem;">
+                <div class="training-card">
+                    <div class="t-label">R@1 (NYC · 20m)</div>
+                    <div class="t-value" style="color:#10b981;">37.37%</div>
+                    <div class="t-sub">+2.17pp vs SALAD baseline</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">Descriptor dim</div>
+                    <div class="t-value">512-d</div>
+                    <div class="t-sub">L2-normalised</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">Input resolution</div>
+                    <div class="t-value">336×336</div>
+                    <div class="t-sub">CLIP-optimal size</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">SALAD clusters</div>
+                    <div class="t-value">64</div>
+                    <div class="t-sub">soft assignment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ TRAINING ═══════════════════ -->
+    <section class="page-section" id="training">
+        <div class="container">
+            <div class="section-label">Training</div>
+            <h2 class="section-heading">Training Details</h2>
+            <div class="training-grid">
+                <div class="training-card">
+                    <div class="t-label">Dataset</div>
+                    <div class="t-value">GSV-Cities</div>
+                    <div class="t-sub">Street-view pairs</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">Loss Function</div>
+                    <div class="t-value" style="font-size:0.9rem;">MultiSimilarity</div>
+                    <div class="t-sub">+ L2 normalisation</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">Epochs</div>
+                    <div class="t-value">5</div>
+                    <div class="t-sub"></div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">CLIP weights</div>
+                    <div class="t-value" style="font-size:0.9rem;">Frozen</div>
+                    <div class="t-sub">ViT-L/14-336</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">DINOv2</div>
+                    <div class="t-value" style="font-size:0.9rem;">Fine-tuned</div>
+                    <div class="t-sub">Large variant</div>
+                </div>
+                <div class="training-card">
+                    <div class="t-label">Framework</div>
+                    <div class="t-value">PyTorch</div>
+                    <div class="t-sub">HuggingFace / OpenCLIP</div>
+                </div>
+            </div>
+
+            <!--
+            <div style="margin-top:1.5rem;background:var(--card-bg);border:1px solid var(--border-color);border-radius:10px;padding:1.3rem 1.6rem;">
+                <h4 style="color:var(--text-primary);font-size:0.95rem;font-weight:700;margin-bottom:0.8rem;">
+                    <i class="fas fa-lightbulb" style="color:#fb923c;"></i>&nbsp; Design Rationale
+                </h4>
+                <ul style="color:var(--text-secondary);font-size:0.88rem;line-height:1.75;padding-left:1.3rem;">
+                    <li>
+                        <strong style="color:var(--text-primary);">Why 336×336?</strong>
+                        CLIP ViT-L/14-336 is natively trained at this resolution, avoiding interpolation of positional embeddings and maximising semantic fidelity.
+                    </li>
+                    <li style="margin-top:0.4rem;">
+                        <strong style="color:var(--text-primary);">Why freeze CLIP?</strong>
+                        CLIP's zero-shot semantic richness serves as a reliable prior; fine-tuning risks degrading cross-domain generalisation.
+                    </li>
+                    <li style="margin-top:0.4rem;">
+                        <strong style="color:var(--text-primary);">Why SALAD over NetVLAD?</strong>
+                        SALAD uses differentiable soft assignment with self-attention context, producing more informative aggregations for spatially-gated features.
+                    </li>
+                </ul>
+            </div>
+        -->
+        </div>
+    </section>
+
+    <!-- ═══════════════════ FOOTER NAV ═══════════════════ -->
+   
+    <div class="page-footer-nav">
+        <a href="../projects.html"><i class="fas fa-arrow-left"></i>&nbsp; Back to all projects</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="../index.html">Home</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="../publications.html">Publications</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pranay Meshram. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function copyCitation(btn) {
+            const text = document.getElementById('bibtex-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.color = '#10b981';
+                btn.style.borderColor = '#10b981';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
