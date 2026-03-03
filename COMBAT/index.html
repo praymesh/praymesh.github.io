@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="COMBAT: Conditional World Models for Behavioral Agent Training — a real-time, action-controlled world model trained on Tekken 3 using diffusion models.">
+  <meta name="keywords" content="COMBAT, World Models, Diffusion Transformer, Behavioral Agent, Tekken, Game AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COMBAT: Conditional World Models for Behavioral Agent Training</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png" type="image/png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    #dark-mode-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9999;
+      background: #363636;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      transition: background 0.2s;
+    }
+    #dark-mode-toggle:hover { background: #222; }
+    body.dark-mode { background: #121212; color: #e0e0e0; }
+    body.dark-mode .hero { background: #1a1a1a; }
+    body.dark-mode .hero.is-light { background: #1e1e1e; }
+    body.dark-mode .section { background: #121212; }
+    body.dark-mode .title,
+    body.dark-mode .subtitle { color: #f0f0f0; }
+    body.dark-mode .publication-title { color: #ffffff; }
+    body.dark-mode .content p { color: #cccccc; }
+    body.dark-mode .content a { color: #7eb8f7; }
+    body.dark-mode .footer { background: #1a1a1a; color: #aaa; }
+    body.dark-mode .footer a { color: #7eb8f7; }
+    body.dark-mode pre, body.dark-mode code { background: #1e1e1e; color: #d4d4d4; }
+    body.dark-mode .button.is-dark { background: #333; }
+    body.dark-mode #dark-mode-toggle { background: #f5f5f5; color: #121212; }
+    body.dark-mode #dark-mode-toggle:hover { background: #ddd; }
+  </style>
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">COMBAT: Conditional World Models for Behavioral Agent Training</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://anm-ol.github.io/">Anmol Agarwal</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/Summer193-hash">Sumer Singh</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://praymesh.github.io/">Pranay Meshram</a><sup>2*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/saurav-suman-a113362a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Saurav Suman</a><sup>2*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Andrew Lapp</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Shahbuland Matiana</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Louis Castricato</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Spencer Frazier</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Overworld AI,&nbsp;</span>
+            <span class="author-block"><sup>2</sup>Indian Institute of Science Education and Research Bhopal</span>
+          </div>
+          <div class="is-size-6 publication-authors" style="margin-top: 0.4rem;">
+            <span class="author-block">* Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./assets\Media2.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">COMBAT</span> is a real-time, action-controlled world model
+        trained on the 1v1 fighting game Tekken 3, simulating a dynamic opponent
+        that reacts to player actions using a 1.2B parameter Diffusion Transformer.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/Cover_Page.drawio1.png"
+                    type="image/png">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in generative AI have spurred the development of world models capable
+            of simulating 3D-consistent environments and interactions with static objects. A
+            significant limitation of these models is the ability to model dynamic, reactive agents
+            which can intelligently influence and interact with the world.
+          </p>
+          <p>
+            We introduce <span class="dnerf">COMBAT</span>, a real-time, action-controlled world
+            model trained on the complex 1v1 fighting game Tekken 3 to address these shortcomings.
+            Our work demonstrates that diffusion models can successfully simulate a dynamic opponent
+            that reacts to player actions while learning its behavior implicitly.
+          </p>
+          <p>
+            Our approach utilizes a 1.2 billion parameter Diffusion Transformer, conditioned on
+            latent representations from a deep compression autoencoder. We employ state-of-the-art
+            techniques, including causal distillation and diffusion forcing to achieve real-time
+            inference. Crucially, we observe the emergence of sophisticated agent behavior by
+            training the model solely on single-player inputs, without any explicit supervision for
+            the opponent's policy. Unlike traditional imitation learning methods which require
+            complete action labels, <span class="dnerf">COMBAT</span> learns effectively from
+            partially observed data to generate responsive behaviors for a controllable primary
+            player (Player 1). We present our results from an extensive study and introduce novel
+            evaluation methods to benchmark this emergent agent behavior, establishing a strong
+            foundation for training interactive agents within diffusion-based world models.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model</h2>
+        <div class="publication-video">
+            <img src="./assets/Cover_Page.drawio1.png" alt="COMBAT Model Overview" style="width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Gameplay Demonstrations. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Gameplay Demonstrations</h2>
+          <p>
+            <span class="dnerf">COMBAT</span> generates plausible, temporally consistent
+            gameplay frames conditioned on player inputs, producing high-quality real-time
+            video of the Tekken 3 environment.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Gameplay Demonstrations. -->
+
+      <!-- Emergent Agent Behavior. -->
+      <div class="column">
+        <h2 class="title is-3">Emergent Agent Behavior</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Without explicit supervision of the opponent's policy, <span class="dnerf">COMBAT</span>
+              learns sophisticated reactive behaviors purely from single-player gameplay data,
+              demonstrating emergent intelligence in the simulated opponent.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Action-Conditioned Generation</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Latent State Interpolation</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can smoothly interpolate between latent game states encoded by our deep compression
+            autoencoder. Use the slider here to linearly interpolate between two game states,
+            revealing the continuity of the learned latent space.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <h3 class="title is-4">Rollout Replay</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">COMBAT</span>, we can replay full gameplay rollouts
+            generated entirely by the world model, demonstrating coherent long-horizon simulation
+            with reactive opponent behavior.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our work builds on a rich body of research in world models, generative video, and game AI.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2301.04104">Genie</a> and
+            <a href="https://arxiv.org/abs/2311.15127">GameNGen</a> explore generative interactive
+            environments, demonstrating the potential of large-scale models for game simulation.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2402.03243">Diffusion Forcing</a> introduces a flexible
+            training paradigm for sequential diffusion models that we leverage for coherent
+            long-horizon video generation.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2409.02241">Open-Sora</a> and related Diffusion
+            Transformer architectures form the backbone of our 1.2B parameter video generation model.
+          </p>
+          <p>
+            Work on imitation learning from partial observations, such as
+            <a href="https://arxiv.org/abs/2106.03023">GAIL</a> variants, motivates our approach of
+            learning opponent behavior solely from single-player gameplay recordings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{
+agarwal2025combat,
+title={{COMBAT}: Conditional World Models for Behavioral Agent Training},
+author={Anmol Agarwal and Pranay Meshram and Sumer Singh and Saurav Suman and Andrew Lapp and Shahbuland Matiana and Louis Castricato and Spencer Frazier},
+booktitle={1st Workshop on Reliable and Interactive World Model in Computer Vision Non Archival},
+year={2025},
+url={https://openreview.net/forum?id=i7afmqzE4b}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="#" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template adapted from <a href="https://nerfies.github.io">Nerfies</a>.
+            COMBAT &mdash; Overworld AI &amp; IISER Bhopal, 2025.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="dark-mode-toggle" onclick="toggleDark()">
+  <span id="dm-icon">🌙</span> <span id="dm-label">Dark</span>
+</button>
+
+<script>
+  function toggleDark() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    document.getElementById('dm-icon').textContent = isDark ? '☀️' : '🌙';
+    document.getElementById('dm-label').textContent = isDark ? 'Light' : 'Dark';
+    localStorage.setItem('combat-dark', isDark ? '1' : '0');
+  }
+  (function() {
+    if (localStorage.getItem('combat-dark') === '1') {
+      document.body.classList.add('dark-mode');
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('dm-icon').textContent = '☀️';
+        document.getElementById('dm-label').textContent = 'Light';
+      });
+    }
+  })();
+</script>
+</body>
+</html>
