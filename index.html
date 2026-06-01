@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranay Meshram- Academic Portfolio</title>
+    <title>Pranay Meshram - Academic Portfolio</title>
+    
+    <!-- Open Graph / SEO Meta Tags -->
+    <meta property="og:title" content="Pranay Meshram - Academic Portfolio">
+    <meta property="og:description" content="Pre-final year undergraduate in Data Science and Engineering at IISER Bhopal, passionate about Computer Vision, Visual Place Recognition, and World Models.">
+    <meta property="og:image" content="https://praymesh.github.io/assets/profile-img.jpg">
+    <meta property="og:url" content="https://praymesh.github.io/">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -37,7 +45,7 @@
                     
                     <div class="hero-text">
     <h1 class="hero-title">Hello, I'm <span class="highlight">Pranay Meshram</span></h1>
-    <p class="hero-subtitle">Student Researcher</p>
+    <p class="hero-subtitle"><span id="typed-text"></span></p>
     <p class="hero-description">
         I'm Pranay, a pre-final year undergraduate in Data Science and Engineering at 
         <strong>IISER Bhopal</strong>. I am passionate about 
@@ -113,14 +121,12 @@
                         <p class="experience-location">
                             <i class="fas fa-map-marker-alt"></i> Roorkee, India
                         </p>
-                        <p class="exp-description">
-                            <ul class="exp-description">
-                                <li>Developing novel methods for Visual Place Recognition (VPR) and image geolocalization under <a class="nav-link" href="https://sites.google.com/view/gauravnayak"  >Dr.Gaurav Kumar Nayak</a> </li>
-                               <!--<li>Literature Review of existing VPR & Geolocalization techniques and datasets.</li>
-                                <li>Implementing baseline models for performance evaluation.</li>
-                                -->
-                            </ul>   
-                        </p>
+                        <ul class="exp-description">
+                            <li>Developing novel methods for Visual Place Recognition (VPR) and image geolocalization under <a class="nav-link" href="https://sites.google.com/view/gauravnayak"  >Dr.Gaurav Kumar Nayak</a> </li>
+                            <!--<li>Literature Review of existing VPR & Geolocalization techniques and datasets.</li>
+                            <li>Implementing baseline models for performance evaluation.</li>
+                            -->
+                        </ul>   
                     </div>
 
                     <div class="experience-item">
@@ -134,14 +140,11 @@
                         <p class="experience-location">
                             <i class="fas fa-map-marker-alt"></i> IISER Bhopal, India
                         </p>
-                        <p class="exp-description">
-                            <ul class="exp-description">
-                                <li>Implemented Vision Language Models for segmentation tasks. </li>
-                                <!--<li>Utilized Coco-stuff dataset for training the CAT-Seg(Cost Aggregation for Open-Vocabulary Semantic Segmentation) Model with Siglip-2 encoder for segmentation through Vision Language Model  </li>
-                                <li>Literature review of most recent A* conference papers in Open Vocabulary Segmentation</li> -->
-                            </ul>
-                            
-                        </p>
+                        <ul class="exp-description">
+                            <li>Implemented Vision Language Models for segmentation tasks. </li>
+                            <!--<li>Utilized Coco-stuff dataset for training the CAT-Seg(Cost Aggregation for Open-Vocabulary Semantic Segmentation) Model with Siglip-2 encoder for segmentation through Vision Language Model  </li>
+                            <li>Literature review of most recent A* conference papers in Open Vocabulary Segmentation</li> -->
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -232,6 +235,7 @@
         </div>
     </footer>
 
+    <script src="assets/vendor/typed.js/typed.umd.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

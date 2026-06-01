@@ -7,51 +7,32 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .projects-hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
-            padding: 2rem 0 1.5rem;
-            text-align: center;
-        }
-
-        .projects-hero h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.6rem;
-        }
-
-        .projects-hero p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
         .projects-section {
             padding: 2rem 0;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.3rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .project-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .project-card:hover {
-            transform: translateY(-6px) scale(1.01);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
+            border-color: var(--text-primary);
         }
 
         .project-image {
@@ -399,16 +380,8 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="projects-hero">
-        <div class="container">
-            <h1>Research Projects</h1>
-            <p>yoo ! look at some of my projects : </p>
-        </div>
-    </section>
-
     <!-- Projects Content -->
-    <section class="projects-section">
+    <section class="projects-section" style="padding-top: 8rem;">
         <div class="container">
             
             <!-- Featured Project -->

@@ -81,7 +81,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.publication-card, .project-card, .interest-card, .passion-card, .mosaic-card').forEach(el => {
+document.querySelectorAll('.publication-card, .project-card, .interest-card, .passion-card, .mosaic-card, .experience-item, .skill-row, .interest-card-compact, .hero-content').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -213,20 +213,15 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Typing effect for hero title (optional enhancement)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
+// Typing effect for hero title
+if (document.getElementById('typed-text')) {
+    new Typed('#typed-text', {
+        strings: ['Student Researcher', 'Computer Vision Enthusiast', 'Exploring World Models'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
 }
 
 // Add parallax effect to hero section

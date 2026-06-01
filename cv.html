@@ -7,38 +7,25 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .cv-hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
-            padding: 2rem 0 1.5rem;
-            text-align: center;
-        }
-
-        .cv-hero h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.6rem;
-        }
-
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            padding: 0.7rem 1.8rem;
-            background-color: var(--accent-color);
-            color: var(--accent-text);
+            padding: 1rem 2.2rem;
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 100px;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: var(--shadow-md);
         }
 
         .download-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
         }
 
         .cv-section {
@@ -46,17 +33,21 @@
         }
 
         .section-header {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
         }
 
         .section-header h2 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.3rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--link-color);
             display: inline-block;
+            position: relative;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--text-primary);
         }
 
         /* Experience Items - Simple List */
@@ -67,18 +58,19 @@
 
         .experience-item {
             background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1.2rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
 
         .experience-item:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: var(--shadow-md);
+            border-color: var(--text-primary);
         }
 
         .exp-header {
@@ -135,16 +127,18 @@
 
         .skill-category {
             background-color: var(--card-bg);
-            padding: 1.3rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
 
         .skill-category:hover {
-            transform: translateY(-3px);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-lg);
+            border-color: var(--text-primary);
         }
 
         .skill-category h3 {
@@ -185,21 +179,22 @@
         /* Education Section */
         .education-card {
             background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.2rem;
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            backdrop-filter: blur(10px);
         }
 
         .education-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: var(--shadow-md);
+            border-color: var(--text-primary);
         }
 
         .education-header {
@@ -304,21 +299,14 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="cv-hero">
-        <div class="container">
-            <h1>Curriculum Vitae</h1>
-            <a href="assets\documents\resume.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                <i class="fas fa-download"></i> View CV (PDF)
-            </a>
-        </div>
-    </section>
-
     <!-- Education Section -->
-    <section class="cv-section">
+    <section class="cv-section" style="padding-top: 8rem;">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Education</h2>
+                <a href="assets\documents\resume.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
+                    <i class="fas fa-download"></i> View CV (PDF)
+                </a>
             </div>
 
             <div class="education-card">

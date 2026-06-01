@@ -7,58 +7,39 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .publications-hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
-            padding: 2rem 0 1.5rem;
-            text-align: center;
-        }
-
-        .publications-hero h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.6rem;
-        }
-
-        .publications-hero p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
         .publications-section {
             padding: 2rem 0;
         }
 
         .year-section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 4rem;
         }
 
         .year-title {
-            font-size: 1.4rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.35rem;
-            border-bottom: 2px solid var(--accent-color);
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
             display: inline-block;
         }
 
         .publication-card {
             background-color: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
 
         .publication-card:hover {
-            transform: translateX(6px);
+            transform: translateX(10px) scale(1.02);
             box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
+            border-color: var(--text-primary);
         }
 
         .pub-type {
@@ -293,15 +274,7 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="publications-hero">
-        <div class="container">
-            <h1>Publications</h1>
-            <p>A comprehensive collection of my research contributions, many more coming soon....</p>
-        </div>
-    </section>
-
-    <!-- Filter Section -->
+    <!-- Filter Section (Commented out initially) -->
     <!--  <section class="filter-section">
         <div class="container">
             <div class="filter-buttons">
@@ -315,7 +288,7 @@
     </section>-->
 
     <!-- Publications List -->
-    <section class="publications-section">
+    <section class="publications-section" style="padding-top: 8rem;">
         <div class="container">
             <!-- 2025 Publications -->
             <div class="year-section">

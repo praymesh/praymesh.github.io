@@ -8,23 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .beyond-hero {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 2rem 0 1.5rem;
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+            padding: 7rem 0 1.5rem;
             text-align: center;
-            color: #ffffff;
+            color: var(--text-primary);
         }
 
         .beyond-hero h1 {
-            font-size: 2rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.04em;
         }
 
         .beyond-hero p {
-            font-size: 1rem;
+            font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
-            opacity: 0.95;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
@@ -34,12 +35,12 @@
 
         .passion-intro {
             max-width: 800px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 3rem;
             text-align: center;
         }
 
         .passion-intro p {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 1rem;
@@ -47,25 +48,26 @@
 
         .passions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .passion-card {
             background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid var(--border-color);
-            transition: all 0.4s ease;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .passion-card:hover {
-            transform: translateY(-8px) rotate(1deg);
-            border-color: var(--accent-color);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) rotate(1deg) scale(1.02);
+            border-color: var(--text-primary);
+            box-shadow: var(--shadow-lg);
         }
 
         .passion-photo-placeholder {
